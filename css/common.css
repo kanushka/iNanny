@@ -1,0 +1,136 @@
+.primary-btn-color {
+	background-color: #388e3c;
+}
+
+.primary-btn-color:hover {
+	background-color: #2e7d32;
+}
+
+.btn,
+.btn-large {
+	text-decoration: none;
+	color: #fff;
+	background-color: #388e3c;
+	text-align: center;
+	letter-spacing: .5px;
+	-webkit-transition: .2s ease-out;
+	transition: .2s ease-out;
+	cursor: pointer;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #388e3c;
+	-webkit-box-shadow: 0 1px 0 0 #388e3c;
+	box-shadow: 0 1px 0 0 #388e3c;
+}
+
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=url]:not(.browser-default):focus:not([readonly])+label,
+input[type=time]:not(.browser-default):focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+	color: #388e3c;
+}
+
+.input-field .prefix.active {
+	color: #388e3c;
+}
+
+input.invalid:not([type]),
+input.invalid:not([type]):focus,
+input[type=text].invalid:not(.browser-default),
+input[type=text].invalid:not(.browser-default):focus,
+input[type=password].invalid:not(.browser-default),
+input[type=password].invalid:not(.browser-default):focus,
+input[type=email].invalid:not(.browser-default),
+input[type=email].invalid:not(.browser-default):focus,
+input[type=url].invalid:not(.browser-default),
+input[type=url].invalid:not(.browser-default):focus,
+input[type=time].invalid:not(.browser-default),
+input[type=time].invalid:not(.browser-default):focus,
+input[type=date].invalid:not(.browser-default),
+input[type=date].invalid:not(.browser-default):focus,
+input[type=datetime].invalid:not(.browser-default),
+input[type=datetime].invalid:not(.browser-default):focus,
+input[type=datetime-local].invalid:not(.browser-default),
+input[type=datetime-local].invalid:not(.browser-default):focus,
+input[type=tel].invalid:not(.browser-default),
+input[type=tel].invalid:not(.browser-default):focus,
+input[type=number].invalid:not(.browser-default),
+input[type=number].invalid:not(.browser-default):focus,
+input[type=search].invalid:not(.browser-default),
+input[type=search].invalid:not(.browser-default):focus,
+textarea.materialize-textarea.invalid,
+textarea.materialize-textarea.invalid:focus,
+.select-wrapper.invalid>input.select-dropdown {
+	border-bottom: 1px solid #F44336;
+	-webkit-box-shadow: 0 1px 0 0 #F44336;
+	box-shadow: 0 1px 0 0 #F44336;
+}
+
+.dropdown-content li>a,
+.dropdown-content li>span {
+	font-size: 16px;
+	color: #388e3c;
+	display: block;
+	line-height: 22px;
+	padding: 14px 16px;
+}
+
+@media only screen and (max-width: 992px) {
+	.modal {
+		width: 90%;
+		max-height: 90%;
+	}
+}
+
+.modal.modal-fixed-footer {
+	padding: 0;
+	height: 80%;
+}
+
+.full-preloader {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	background-color: #fff;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.preloader-image{
+  /* width: 80px;
+  height: auto; */
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    width: 80px;
+  }
+  60% {
+    width: 88px;
+  }
+}

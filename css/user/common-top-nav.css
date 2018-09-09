@@ -1,0 +1,72 @@
+
+.primaryNav {
+	box-shadow: none;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	background-color: #fff;
+}
+
+.primaryNav ul a {
+	color: rgba(89,99,119,0.75);
+}
+
+.primaryNav  a {
+	color: rgba(89,99,119,0.75);
+}
+
+.secondaryNav {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+.secondaryNav, .secondaryNav .nav-wrapper i, .secondaryNav a.button-collapse, .secondaryNav a.button-collapse i {
+    height: 50px;
+    line-height: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    /*-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);*/
+}
+
+.secondaryNav ul a {
+	color: rgba(89,99,119,0.75);
+}
+
+
+@media only screen and (min-width: 1024px) {
+	.brandImage {
+	    height: 64px !important;
+	}
+	.brandLogo {
+		margin-top:17px !important;
+		margin-bottom:17px !important;
+	}
+}
+
+.brandImage {
+	height: 56px;
+	display: inline-block;
+}
+
+
+.brandLogo {
+	height: 50px;
+	width: auto;
+	margin-top:10px !important;
+	margin-bottom:13px !important;
+}
+
+.topnavUsername {
+	color: green !important;
+}
+
+.navFixedTop {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 99;
+}
+
+.secondaryNavLink.active {
+	color: green  !important;
+}
+
