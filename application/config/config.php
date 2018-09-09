@@ -44,6 +44,8 @@ $config['js_version'] = '1';
 |--------------------------------------------------------------------------
 |
 | Mailgun email configurations
+| these are trial account keys
+| to send more mail you have to gen paid version key
 |
 */
 $config['mailgun_key'] = 'key-99a2abda403769b6f6152c46f518a6d3';
@@ -55,6 +57,8 @@ $config['mailgun_key'] = 'key-99a2abda403769b6f6152c46f518a6d3';
 |--------------------------------------------------------------------------
 |
 | Twilio API Credentials
+| these are trial account keys
+| to send more SMS you have to gen paid version key
 |
 */
 $config['twilio_sid'] = 'ACf5556bf0cb57c1a14e8d2c65ef67d905';
