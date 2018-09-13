@@ -113,6 +113,7 @@ textarea.materialize-textarea.invalid:focus,
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
+	margin-top: -100px;
 	background-color: #fff;
 	z-index: 999;
 	display: flex;

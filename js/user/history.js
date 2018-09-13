@@ -1,8 +1,12 @@
 $(document).ready(function () {
 	getBabysHeightData();
 	getBabysWeightData();
+
 	//test
 	loadBabysStatusChart();
+
+	console.log('baby history ready');
+	$('#roundPreloader').fadeOut();
 });
 
 
@@ -133,7 +137,7 @@ function loadBabysStatusChart(labels, data) {
 				label: "Babys' Status",
 				// backgroundColor: '#388e3c',
 				borderColor: '#388e3c',
-				data: [40, 10, 4, 10, 20],				
+				data: [40, 10, 4, 10, 20],
 			}],
 		},
 		options: {
