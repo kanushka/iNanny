@@ -41,18 +41,27 @@ function convertHeightListToArrays(heightList) {
 }
 
 function loadBabysHeightChart(labels, data) {
+	console.log(data);
 	var ctx = $('#babysHeightChart');
 	var myLineChart = new Chart(ctx, {
 		type: 'line',
 		data: {
 			labels: labels,
 			datasets: [{
-				label: "Height",
-				// backgroundColor: '#388e3c',
-				borderColor: '#388e3c',
-				data: data,
-				lineTension: 0,
-			}],
+					label: "Height",
+					// backgroundColor: '#388e3c',
+					borderColor: '#388e3c',
+					data: data,
+					lineTension: 0,
+				},
+				{
+					label: "Default",
+					// backgroundColor: '#388e3c',
+					borderColor: '#222e3c',
+					data: ["50", "52", "54", "57", "60", "64", "68", "73"],
+					lineTension: 0,
+				}
+			],
 		},
 		options: {
 			scales: {
@@ -99,18 +108,27 @@ function convertWeightListToArrays(weightList) {
 }
 
 function loadBabysWeightChart(labels, data) {
+
 	var ctx = $('#babysWeightChart');
 	var myLineChart = new Chart(ctx, {
 		type: 'line',
 		data: {
 			labels: labels,
 			datasets: [{
-				label: "Weight",
-				// backgroundColor: '#388e3c',
-				borderColor: '#388e3c',
-				data: data,
-				lineTension: 0,
-			}],
+					label: "Weight",
+					// backgroundColor: '#388e3c',
+					borderColor: '#388e3c',
+					data: data,
+					lineTension: 0,
+				},
+				{
+					label: "Default",
+					// backgroundColor: '#388e3c',
+					borderColor: '#222e3c',
+					data: ["2", "3", "4", "5", "6", "7"],
+					lineTension: 0,
+				}
+			],
 		},
 		options: {
 			scales: {
@@ -118,7 +136,7 @@ function loadBabysWeightChart(labels, data) {
 					ticks: {
 						suggestedMin: 1,
 						// suggestedMax: 10
-						stepSize: 0.5
+						stepSize: 1
 					}
 				}]
 			}
