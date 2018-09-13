@@ -5,6 +5,13 @@ var video = function (p) {
 	p.poseNet;
 	p.poses = [];
 
+	// rectangle variables
+	p.rectX = 50;
+	p.rectY = 50;
+	p.rectHeight = 100;
+	p.rectWidth = 100;
+	p.isClickedInside = false;
+
 	p.setup = function () {
 
 		// get screen width
@@ -17,8 +24,6 @@ var video = function (p) {
 		}
 
 		p.createCanvas(p.windowWidth, p.windowHeight);
-
-
 
 		// create video input
 		p.video = p.createCapture(p.VIDEO);
@@ -38,6 +43,13 @@ var video = function (p) {
 		$("#videoContainer").width(p.width);
 		$("#videoContainer").height(p.height);
 
+
+		// get local storage data and initialize
+		p.rectX = localStorage.getItem("rectX") || 10;
+		p.rectY = localStorage.getItem("rectY") || 10;
+		p.rectWidth = localStorage.getItem("rectWidth") || 50;
+		p.rectHeight = localStorage.getItem("rectHeight") || 50;
+
 	}
 
 	p.modelReady = function () {
@@ -51,8 +63,12 @@ var video = function (p) {
 		p.image(p.video, 0, 0, p.width, p.height);
 
 		// We can call both functions to draw all keypoints and the skeletons
-		p.drawKeypoints();
 		p.drawSkeleton();
+		p.drawKeypoints();
+		p.drawRectangle();
+
+		// show poses
+		p.checkPose();
 	}
 
 	// A function to draw ellipses over the detected keypoints
@@ -84,10 +100,60 @@ var video = function (p) {
 				let partA = skeleton[j][0];
 				let partB = skeleton[j][1];
 				p.stroke(0, 153, 0);
+				p.strokeWeight(2);
 				p.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
 			}
 		}
 	}
+
+	// A function to draw rectangle
+	p.drawRectangle = function () {
+		p.fill(50, 150, 50, 50);
+		p.stroke('green');
+		p.strokeWeight(4);
+		// A rectangle
+		p.rect(p.rectX, p.rectY, p.rectWidth, p.rectHeight);
+	}
+
+	p.isMouseInRectangle = function (pointX = p.mouseX, pointY = p.mouseY) {
+		return (pointX - p.rectX) > 0 && (pointX - p.rectX) < p.rectWidth && (pointY - p.rectY) > 0 && (pointY - p.rectY) < p.rectHeight;
+	}
+
+
+	// check pose parts
+	// identify where pose pars are
+	p.checkPose = function () {
+		if (p.poses.length > 0) {
+			// console.log(p.poses);
+
+			if (p.poses[0].hasOwnProperty('pose')) {
+
+				if (p.poses[0].pose.hasOwnProperty('keypoints')) {
+
+					for (const key in p.poses[0].pose.keypoints) {
+						p.part = p.poses[0].pose.keypoints[key];
+						if (p.poses[0].pose.keypoints.hasOwnProperty(key)) {
+
+							if (p.part.score > 0.7) {
+
+								if (p.isMouseInRectangle(p.part.position.x, p.part.position.y)) {
+									// part in rectangle
+								} else {
+									console.log(`${p.part.part} - ${p.part.score}`);
+									// part outside of the rectangle
+
+									// TAKE ACTION
+								}
+							}
+
+						}
+					}
+
+				}
+			}
+		}
+	}
+
 };
 
 new p5(video, 'videoContainer');

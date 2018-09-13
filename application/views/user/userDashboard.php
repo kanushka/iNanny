@@ -103,42 +103,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div class="container firstContent">
 
 		<div class="row">
-			<div class="col m6">
+
+			<div class="col s12 m6">
 				<div class="z-depth-4 center-align" id='videoContainer'></div>
 			</div>
-			<!-- </div>
-		<div class="row"> -->
-			<div class="col m6">
-				<div class="row">
-					<div class="col s12">
-						<div id='whetherContainer'>
-							<div class="row">
-								<div class="col s12">Kelaniya</div>
-								<div class="col s6">
-									<img src="<?php echo base_url(); ?>img/weather/icons8-partly-cloudy-day.png">
-								</div>
-								<div class="col s6">27 &deg;C</div>
-							</div>
-						</div>
-					</div>
-				</div>
+
+			<div class="col s12 m6">
 				<div class="row">
 					<div class="col s12">
 						<div id='audioContainer'></div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="row" id="posesRow">
-			<div class="col s12 m4" id="poseTile" hidden>
-				<div class="card-panel teal">
-					<span class="white-text part-value"> </span>
-					<span class="white-text scope-value"> </span>
-					<span class="white-text x-value"> </span>
-					<span class="white-text y-value"> </span>
-				</div>
-			</div>
 		</div>
 
 	</div>
