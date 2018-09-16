@@ -1,4 +1,4 @@
-var video = function(p) {
+var video = function (p) {
 	// video variables
 	p.video;
 	p.poseNet;
@@ -16,7 +16,7 @@ var video = function(p) {
 	p.rectPointGapX = 0;
 	p.rectPointGapY = 0;
 
-	p.setup = function() {
+	p.setup = function () {
 		// get screen width
 		if ($(window).width() < 640) {
 			p.windowWidth = $(window).width() - $(window).width() / 18;
@@ -36,9 +36,9 @@ var video = function(p) {
 		p.poseNet = ml5.poseNet(p.video, "single", p.modelReady);
 		// This sets up an event that fills the global variable "poses"
 		// with an array every time new poses are detected
-		p.poseNet.on("pose", function(results) {
-			p.poses = results;
-		});
+		// p.poseNet.on("pose", function(results) {
+		// 	p.poses = results;
+		// });
 		// Hide the video element, and just show the canvas
 		p.video.hide();
 
@@ -51,20 +51,22 @@ var video = function(p) {
 		p.rectY = localStorage.getItem("rectY") || 10;
 		p.rectWidth = localStorage.getItem("rectWidth") || 50;
 		p.rectHeight = localStorage.getItem("rectHeight") || 50;
+
 	};
 
-	p.modelReady = function() {
+	p.modelReady = function () {
 		console.log("video model ready");
 		$("#roundPreloader").fadeOut();
 	};
 
-	p.draw = function() {
+	p.draw = function () {
 		// video data process
 		p.image(p.video, 0, 0, p.width, p.height);
 
 		// We can call both functions to draw all keypoints and the skeletons
-		p.drawSkeleton();
-		p.drawKeypoints();
+		// p.drawSkeleton();
+		// p.drawKeypoints();
+
 		p.drawRectangle();
 
 		// show poses
@@ -72,7 +74,7 @@ var video = function(p) {
 	};
 
 	// A function to draw ellipses over the detected keypoints
-	p.drawKeypoints = function() {
+	p.drawKeypoints = function () {
 		// Loop through all the poses detected
 		for (let i = 0; i < p.poses.length; i++) {
 			// For each pose detected, loop through all the keypoints
@@ -91,7 +93,7 @@ var video = function(p) {
 	};
 
 	// A function to draw the skeletons
-	p.drawSkeleton = function() {
+	p.drawSkeleton = function () {
 		// Loop through all the skeletons detected
 		for (let i = 0; i < p.poses.length; i++) {
 			let skeleton = p.poses[i].skeleton;
@@ -112,7 +114,7 @@ var video = function(p) {
 	};
 
 	// A function to draw rectangle
-	p.drawRectangle = function() {
+	p.drawRectangle = function () {
 		p.fill(50, 150, 50, 50);
 		p.stroke("green");
 		p.strokeWeight(4);
@@ -120,7 +122,7 @@ var video = function(p) {
 		p.rect(p.rectX, p.rectY, p.rectWidth, p.rectHeight);
 	};
 
-	p.mouseDragged = function() {
+	p.mouseDragged = function () {
 		// console.log(`${p.mouseX}, ${p.mouseY}`);
 
 		if (p.isMouseInVideoBox()) {
@@ -146,7 +148,7 @@ var video = function(p) {
 		}
 	};
 
-	p.mousePressed = function() {
+	p.mousePressed = function () {
 		console.log("mouse clicked");
 
 		if (p.isMouseInVideoBox()) {
@@ -172,7 +174,7 @@ var video = function(p) {
 		}
 	};
 
-	p.isMouseInRectangle = function(pointX = p.mouseX, pointY = p.mouseY) {
+	p.isMouseInRectangle = function (pointX = p.mouseX, pointY = p.mouseY) {
 		return (
 			pointX - p.rectX > 0 &&
 			pointX - p.rectX < p.rectWidth &&
@@ -181,13 +183,13 @@ var video = function(p) {
 		);
 	};
 
-	p.isMouseInVideoBox = function(pointX = p.mouseX, pointY = p.mouseY) {
+	p.isMouseInVideoBox = function (pointX = p.mouseX, pointY = p.mouseY) {
 		return pointX > 0 && pointX < p.width && pointY > 0 && pointY < p.height;
 	};
 
 	// check pose parts
 	// identify where pose pars are
-	p.checkPose = function() {
+	p.checkPose = function () {
 		if (p.poses.length > 0) {
 			// console.log(p.poses);
 

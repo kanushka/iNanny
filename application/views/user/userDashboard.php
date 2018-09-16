@@ -108,28 +108,47 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="z-depth-4 center-align" id='videoContainer'></div>
 			</div>
 
-			<div class="col s12 m3">
+			<div class="col s12 m4">
 				<div class="row">
+
+					<!-- baby face card -->
 					<div class="col s12">
-						<div id='audioContainer'></div>
+						<div class="card-panel grey lighten-5 z-depth-1">
+							<div class="row valign-wrapper">
+								<div class="col s2">
+									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								</div>
+								<div class="col s10">
+									<span class="black-text">
+										Your baby in a HAPPY face
+									</span>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="col s12" hidden>
-						<div id='imageContainer'></div>
-						<p>
-							<button id="catButton">Add Cat Image</button>
-							<p><span id="amountOfCatImages">0</span> Cat Images</p>
-							<br><button id="dogButton">Add Dog Image</button>
-							<p><span id="amountOfDogImages">0</span> Dog Images</p>
-						</p>
-						<br />
-						<p><button id="train">Train</button><span id="loss"></span></p>
-						<p><button id="setClasifier">getClassifire</button></p>
-						<br />
-						<p>
-							<button id="buttonPredict">Start guessing!</button><br>
-							Your custom model labeled this as: <span id="result">...</span>
-						</p>
+
+					<!-- message card -->
+					<div class="col s12">
+						<div class="card-panel grey lighten-5 z-depth-1">
+							<div class="row valign-wrapper">
+								<div class="col s12">
+									<span class="black-text">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+										magna aliqua.
+									</span>
+								</div>
+							</div>
+						</div>
 					</div>
+
+					<!-- spectrum card -->
+					<div class="col s12">
+						<div class="row valign-wrapper">
+							<div id='audioContainer'></div>
+
+						</div>
+					</div>
+
 				</div>
 			</div>
 

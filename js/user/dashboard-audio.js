@@ -5,7 +5,8 @@ var audio = function (p) {
 	p.fft;
 
 	p.setup = function () {
-		p.createCanvas(400, 200);
+
+		p.createCanvas(360, 200);
 		p.noFill();
 
 		p.mic = new p5.AudioIn();

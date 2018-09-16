@@ -28,8 +28,64 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<div class="row">
 
-			<div class="col s12 m6">
-				<div class="z-depth-4 center-align" id='videoContainer'></div>
+			<div class="col s12 m4">
+				<div class="center-align" id='infoContainer'>
+
+					<!-- info card -->
+					<div class="col s12">
+						<div class="card-panel grey lighten-5 z-depth-1">
+							<div class="row valign-wrapper">
+								<div class="col s2">
+									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								</div>
+								<div class="col s10">
+									<span class="black-text">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- info card -->
+					<div class="col s12">
+						<div class="card-panel grey lighten-5 z-depth-1">
+							<div class="row valign-wrapper">
+								<div class="col s2">
+									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								</div>
+								<div class="col s10">
+									<span class="black-text">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+										magna aliqua..
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- info card -->
+					<div class="col s12">
+						<div class="card-panel grey lighten-5 z-depth-1">
+							<div class="row valign-wrapper">
+								<div class="col s2">
+									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								</div>
+								<div class="col s10">
+									<span class="black-text">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+										magna aliqua.
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="col s12 m8">
+				<div class="z-depth-4 responsive-video center-align" id='videoContainer'></div>
 			</div>
 
 		</div>
