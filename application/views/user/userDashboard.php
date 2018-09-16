@@ -104,14 +104,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<div class="row">
 
-			<div class="col s12 m6">
+			<div class="col s12 m8">
 				<div class="z-depth-4 center-align" id='videoContainer'></div>
 			</div>
 
-			<div class="col s12 m6">
+			<div class="col s12 m3">
 				<div class="row">
 					<div class="col s12">
 						<div id='audioContainer'></div>
+					</div>
+					<div class="col s12" hidden>
+						<div id='imageContainer'></div>
+						<p>
+							<button id="catButton">Add Cat Image</button>
+							<p><span id="amountOfCatImages">0</span> Cat Images</p>
+							<br><button id="dogButton">Add Dog Image</button>
+							<p><span id="amountOfDogImages">0</span> Dog Images</p>
+						</p>
+						<br />
+						<p><button id="train">Train</button><span id="loss"></span></p>
+						<p><button id="setClasifier">getClassifire</button></p>
+						<br />
+						<p>
+							<button id="buttonPredict">Start guessing!</button><br>
+							Your custom model labeled this as: <span id="result">...</span>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -144,6 +161,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <!-- customized files for dashboard view -->
 <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-video.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-audio.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard.js?<?=$this->config->item('js_version');?>"></script>
+<!-- <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard.js?<?=$this->config->item('js_version');?>"></script> -->
 
 </html>

@@ -5,23 +5,35 @@ var audio = function (p) {
 	p.fft;
 
 	p.setup = function () {
-		p.createCanvas(400, 300);
+		p.createCanvas(400, 200);
 		p.noFill();
 
 		p.mic = new p5.AudioIn();
 		p.mic.start();
 		p.fft = new p5.FFT();
 		p.fft.setInput(p.mic);
+
+		p.print('sound model loaded');
 	}
 
 	p.draw = function () {
-		p.background(250);
+		p.background(255);
+
+		// Get the overall volume (between 0 and 1.0)
+		var volume = p.mic.getLevel();
+		var shapeColor = 'green';
+
+		// The louder the volume, the color of the spectrum will change
+		var threshold = 0.01;
+		if (volume > threshold) {
+			shapeColor = 'red';
+		}
 
 		var spectrum = p.fft.analyze();
 
 		p.beginShape();
 		for (i = 0; i < spectrum.length; i++) {
-			p.stroke(0, 200, 0);
+			p.stroke(shapeColor);
 			p.vertex(i, p.map(spectrum[i], 0, 255, p.height, 0));
 		}
 		p.endShape();
@@ -29,4 +41,4 @@ var audio = function (p) {
 
 };
 
-// new p5(audio, 'audioContainer');
+new p5(audio, 'audioContainer');
