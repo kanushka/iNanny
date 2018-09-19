@@ -63,7 +63,18 @@ $config['mailgun_key'] = 'key-99a2abda403769b6f6152c46f518a6d3';
 */
 $config['twilio_sid'] = 'ACf5556bf0cb57c1a14e8d2c65ef67d905';
 $config['twilio_token'] = '2c36007e3e02a9b163e129b6284beba6';
-$config['twilio_number'] = '+19045303286';
+$config['twilio_number'] = '+15052079960';
+
+/*
+|--------------------------------------------------------------------------
+| Notify.lk
+|--------------------------------------------------------------------------
+|
+| Notify.lk API Credentials
+|
+*/
+$config['notifylk_user_id'] = '10542';
+$config['notifylk_api_key'] = 'EnkOmxbOWcBFuzEa0wBA';
 
 
 

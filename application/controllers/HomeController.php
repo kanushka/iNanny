@@ -16,9 +16,11 @@ class HomeController extends CI_Controller
     {
         parent::__construct();
 
+        $this->load->library('email');
+
         $this->load->model('Baby');
         $this->load->model('Relation');
-        $this->load->model('Crypt');
+        $this->load->model('Crypt');        
     }
 
     public function index()
@@ -82,18 +84,27 @@ class HomeController extends CI_Controller
 
         // send email
         $callbackUrl = $this->config->item('base_url') . 'user/' . $this->Crypt->urlEncode($relationId) . '/register';
-        $emailResponse = $this->__sendEmailByPhpMailer($firstName, $callbackUrl, $email);
+        $emailResponse = $this->__sendEmail($firstName, $callbackUrl, $email);
         if ($emailResponse['error']) {
-            log_message('error', 'cannot send confirmation email -> ' . $emailResponse['msg']);
-            return $this->setResponse(true, "somthing went wrong. cannot send confirmation email to $email", ['email_staus' => $emailResponse['msg'], 'callback' => $callbackUrl]);
+            log_message('error', 'cannot send confirmation email -> ' . (isset ($emailResponse['msg'] ) ? $emailResponse['msg'] : null));
+            return $this->setResponse(true, "somthing went wrong. cannot send confirmation email to $email", ['email_staus' => (isset ($emailResponse['msg'] ) ? $emailResponse['msg'] : null), 'callback' => $callbackUrl]);
         }
 
         // send SMS to test API
         // for testing purposes
         $smsResponse = $this->__sendSMS('+94718794546',
-            "$firstName is register baby $babyFirstName with $email address now!");
+            "$babyFirstName baby register by relation $firstName with email $email");
         if ($smsResponse['error']) {
+            log_message('error', 'cannot send SMS -> ' . (isset ($smsResponse['msg'] ) ? $smsResponse['msg'] : null));
             return $this->setResponse(true, "somthing went wrong. cannot send SMS ");
+        }
+
+        // make call
+        // for testing purposes
+        $callResponse = $this->__MakeCall('+94718794546');
+        if ($callResponse['error']) {
+            log_message('error', 'cannot Call -> ' . (isset ($callResponse['msg'] ) ? $callResponse['msg'] : null));
+            return $this->setResponse(true, "somthing went wrong. cannot make a call");
         }
 
         // change realation status to 'invited'
@@ -145,37 +156,51 @@ class HomeController extends CI_Controller
         return $data;
     }
 
-    // private function __sendEmail($name, $url, $email)
-    // {
-    //     $data = [
-    //         'name' => $name,
-    //         'url' => $url,
-    //         'email' => $email,
-    //     ];
+    private function __sendEmail($name, $url, $email)
+    {
+        $this->__initializeEmail();
 
-    //     $html = $this->load->view('email/registrationEmail', $data, true);
+        $data = [
+            'name' => $name,
+            'url' => $url,
+            'email' => $email,
+        ];
 
-    //     try {
+        $html = $this->load->view('email/registrationEmail', $data, true);
 
-    //         // instantiate the SDK with your API credentials
-    //         $mg = Mailgun::create($this->config->item('mailgun_key'));
+        try {
 
-    //         $mg->messages()->send('inanny.000webhostapp.com', [
-    //             'from' => 'support@inanny.com',
-    //             'to' => $email,
-    //             'subject' => 'iNanny Registration',
-    //             'html' => $html,
-    //         ]);
+            $this->email->from('support@inanny.com', 'iNanny Support Team');
+            $this->email->to($email);
+            // $this->email->cc('another@another-example.com');
+            // $this->email->bcc('them@their-example.com');
 
-    //         return ['error' => false];
+            $this->email->subject('iNanny Registration');
+            $this->email->message($html);
 
-    //     } catch (Exception $ex) {
-    //         return [
-    //             'error' => true,
-    //             'msg' => $ex->getMessage(),
-    //         ];
-    //     }
-    // }
+            $this->email->send();
+
+            $this->email->print_debugger(array('headers'));
+
+            return ['error' => false];
+
+        } catch (Exception $ex) {
+            return [
+                'error' => true,
+                'msg' => $ex->getMessage(),
+            ];
+        }
+    }
+
+    private function __initializeEmail(){
+        $config['protocol'] = 'sendmail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+        $config['mailtype'] = 'html';
+
+        $this->email->initialize($config);
+    }
 
     public function checkUserEmail()
     {
@@ -218,12 +243,42 @@ class HomeController extends CI_Controller
 
             return ['error' => false];
 
-        } catch (Exception $ex) {
+        } catch (Exception $ex) {  
             return [
                 'error' => true,
                 'msg' => $ex->getMessage(),
             ];
         }
     }
+
+    private function __MakeCall($toNumber)
+    {
+        $sid = $this->config->item('twilio_sid');
+        $token = $this->config->item('twilio_token');
+        $twilioNumber = $this->config->item('twilio_number');
+
+        try {
+
+            $client = new Client($sid, $token);
+            $client->account->calls->create(  
+                $toNumber,
+                $twilioNumber,
+                array(
+                    "url" => "http://demo.twilio.com/docs/voice.xml"
+                )
+            );
+
+            return ['error' => false];
+
+        } catch (Exception $ex) {  
+            return [
+                'error' => true,
+                'msg' => $ex->getMessage(),
+            ];
+        }
+    }
+
+
+
 
 }
