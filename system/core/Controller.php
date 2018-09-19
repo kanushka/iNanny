@@ -98,10 +98,11 @@ class CI_Controller {
 	 *  set response with JSON output	
 	 * 	
 	 */
-	public function setResponse($error, $msg = null, $data = null){
+	public function setResponse($error, $msg = null, $data = null, $unauthorized = false){
 		
 		$array = array();
         $array['error'] = boolval($error);
+        $array['unauthorized'] = boolval($unauthorized);
         
         if($msg){
             $array['msg'] = $msg;
