@@ -114,9 +114,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<!-- baby face card -->
 					<div class="col s12">
 						<div class="card-panel grey lighten-5 z-depth-1">
-							<div class="row valign-wrapper">
+							<div class="row valign-wrapper" style="margin-bottom:0; min-height:50px;">
 								<div class="col s2">
-									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+								<i class="small material-icons">sentiment_very_satisfied</i>
 								</div>
 								<div class="col s10">
 									<span class="black-text">
@@ -130,9 +130,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<!-- message card -->
 					<div class="col s12">
 						<div class="card-panel grey lighten-5 z-depth-1">
-							<div class="row valign-wrapper">
-								<div class="col s12">
-									<span class="black-text">
+							<div id="alertCard" class="row valign-wrapper text-darken-1" style="margin-bottom:0; min-height:100px;">
+								<div class="col s2">
+									<i id="alertIcon" class="small material-icons">local_florist</i>
+								</div>
+								<div class="col s10">
+									<span id="alertMessage" class="">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
 										magna aliqua.
 									</span>
@@ -149,6 +152,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 					</div>
 
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row valign-wrapper">
+			<div class="col s12 m8">
+				<div class="card-panel grey lighten-5 z-depth-1">
+					<div class="row valign-wrapper">
+						<div class="col s12">
+							<span class="black-text">
+								Hint! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+								magna aliqua.
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col s12 m4">
+				<div class="card-panel grey lighten-5 z-depth-1">
+					<div class="row" style="margin-bottom:0;">
+						<div class="col s12">
+							<div id='audioPlayerContainer'></div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 

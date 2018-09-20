@@ -19,6 +19,9 @@ var video = function (p) {
 	p.isClickedInside = false;
 	p.rectColor = 'green';
 
+	// alert requset que
+	p.isSendAlert = false;
+
 	p.setup = function () {
 		// get screen width
 		if ($(window).width() < 640) {
@@ -151,10 +154,20 @@ var video = function (p) {
 	// check pose parts
 	// identify where pose pars are
 	p.checkPose = function () {
+		// console.log(p.poses);
 		if (p.poses.length > 0) {
-			// console.log(p.poses);
 
 			if (p.poses[0].hasOwnProperty("pose")) {
+
+				if (p.poses[0].pose.hasOwnProperty("score")) {
+					if (p.poses[0].pose.score < 0.4) {
+						// no poses
+						// no baby
+						p.showAlert('no_baby');
+						return;
+					}
+				}
+
 				if (p.poses[0].pose.hasOwnProperty("keypoints")) {
 
 					isDanger = false;
@@ -195,14 +208,23 @@ var video = function (p) {
 					if (isDanger) {
 						// console.error('danger');
 						p.rectColor = 'red';
+						p.sendAlert('danger');
+						p.showAlert('danger');
 					} else if (isWarning) {
 						// console.warn('warning');
 						p.rectColor = 'yellow';
+						p.sendAlert('warning');
+						p.showAlert('warning');
 					} else {
 						p.rectColor = 'green';
+						p.showAlert('safe');
 					}
 				}
 			}
+		} else {
+			// no poses
+			// no baby
+			p.showAlert('no_baby');
 		}
 	};
 
@@ -262,6 +284,81 @@ var video = function (p) {
 		// setTimeout(p.classifyVideo, 60 * 1000);
 	}
 
+	// set alert message in dashboard
+	// types are
+	// 		safe
+	//		danger
+	//		warning
+	//		no_baby
+	p.showAlert = function (alertType = null) {
+
+		let alertCard = p.select('#alertCard');
+		let alertIcon = p.select('#alertIcon');
+		let alertMessage = p.select('#alertMessage');
+
+		// remove all class
+		// color
+		alertCard.removeClass('green-text');
+		alertCard.removeClass('orange-text');
+		alertCard.removeClass('red-text');
+		alertCard.removeClass('blue-text');
+
+		switch (alertType) {
+			case 'danger':
+				alertIcon.html('error');
+				alertMessage.html('DANGER! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+				alertCard.addClass('red-text');
+				break;
+
+			case 'warning':
+				alertIcon.html('warning');
+				alertMessage.html('WARNING! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+				alertCard.addClass('orange-text');
+				break;
+
+			case 'no_baby':
+				alertIcon.html('blur_circular');
+				alertMessage.html('System cannot find baby!');
+				alertCard.addClass('blue-text');
+				break;
+
+			case 'safe':
+			default:
+				// safe
+				alertIcon.html('local_florist');
+				alertMessage.html('SAFE! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+				alertCard.addClass('green-text');
+				break;
+		}
+	}
+
+	// sending alert
+	// send types are
+	// 		danger
+	//		warning
+	p.sendAlert = function (alertType = 'danger') {
+
+		if (p.isSendAlert) {
+			p.print('alert already requested');
+			return;
+		}
+
+		p.print('sending alert request...');
+		Materialize.toast('Sending alert to parents!', 2000);
+
+		p.isSendAlert = true; // block next request
+
+		var url = BASE_URL + "user/send/alert";
+		var postData = {
+			babyId: BABY_ID,
+			alertType: alertType
+		};
+		p.httpPost(url, 'json', postData, function (result) {
+			p.print(result);
+			p.isSendAlert = false; // give chance to next request
+			Materialize.Toast.removeAll();
+		});
+	}
 };
 
 new p5(video, "videoContainer");

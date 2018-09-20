@@ -69,6 +69,7 @@ $route['user/(:num)/password']['POST'] = 'user/InitialSetupController/setPasswor
 $route['user/credentials']['POST'] = 'user/LoginController/checkCredentials';
 
 $route['user/dashboard'] = 'user/DashboardController';
+$route['user/send/alert']['POST'] = 'user/DashboardController/sendAlert';
 
 $route['user/playground'] = 'user/PlaygroundController';
 

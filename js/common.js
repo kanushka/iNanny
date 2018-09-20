@@ -1,5 +1,6 @@
 var BASE_URL = null;
 var DEFAULT_IMG_URL = null;
+var BABY_ID = null;
 
 //
 // events
@@ -7,6 +8,7 @@ var DEFAULT_IMG_URL = null;
 
 $(document).ready(function () {
 	BASE_URL = $("#baseUrl").val();
+	BABY_ID = $("#babyId").val();
 	DEFAULT_IMG_URL = `${BASE_URL}img/profile/sample_img.jpg`;
 
 	// add console banner

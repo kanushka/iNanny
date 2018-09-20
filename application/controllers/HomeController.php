@@ -101,11 +101,11 @@ class HomeController extends CI_Controller
 
         // make call
         // for testing purposes
-        $callResponse = $this->__MakeCall('+94718794546');
-        if ($callResponse['error']) {
-            log_message('error', 'cannot Call -> ' . (isset ($callResponse['msg'] ) ? $callResponse['msg'] : null));
-            return $this->setResponse(true, "somthing went wrong. cannot make a call");
-        }
+        // $callResponse = $this->__MakeCall('+94718794546');
+        // if ($callResponse['error']) {
+        //     log_message('error', 'cannot Call -> ' . (isset ($callResponse['msg'] ) ? $callResponse['msg'] : null));
+        //     return $this->setResponse(true, "somthing went wrong. cannot make a call");
+        // }
 
         // change realation status to 'invited'
         $isStatusChanged = $this->Relation->changeRelationStatus($relationId, 2);

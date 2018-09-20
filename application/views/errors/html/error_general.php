@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div class="row" style="margin-bottom: 0px;">
 		<div class="col s12" style="height: 50vh;  background-image: radial-gradient(50% 100%, #4caf50,50%, #388e3c 69%, #2e7d32 100%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
-			<p style="font-size: 120px; color: #fff; margin-top: 10px; margin-bottom: 0px;">ERORR</p>
+			<p style="font-size: 120px; color: #fff; margin-top: 10px; margin-bottom: 0px;">ERROR</p>
 			<p style="font-size: 24px; color: #fff; margin-top: 10px; text-align:center;">
 				<?php echo $heading; ?>
 			</p>
