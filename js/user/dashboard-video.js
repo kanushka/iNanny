@@ -19,7 +19,7 @@ var video = function (p) {
 	p.isClickedInside = false;
 	p.rectColor = 'green';
 
-	// alert requset que
+	// alert request que
 	p.isSendAlert = false;
 
 	p.setup = function () {
@@ -65,6 +65,9 @@ var video = function (p) {
 		p.rectWidth = localStorage.getItem("rectWidth") || 50;
 		p.rectHeight = localStorage.getItem("rectHeight") || 50;
 
+		// set capture button event
+		p.select("#captureBtn").mouseClicked(p.makeCapture);
+
 	};
 
 	p.videoModelReady = function () {
@@ -84,10 +87,18 @@ var video = function (p) {
 		// video data process
 		p.image(p.video, 0, 0, p.width, p.height);
 
-		// We can call both functions to draw all keypoints and the skeletons
-		p.drawSkeleton();
-		p.drawKeypoints();
-		p.drawRectangle();
+		// draw all key points and the skeletons
+		if ($('#poseKeyPointSwitch').prop('checked')) {
+			p.drawKeypoints();
+		}
+		if ($('#skeletonSwitch').prop('checked')) {
+			p.drawSkeleton();
+		}
+
+		// draw safe zone
+		if ($('#safeZoneSwitch').prop('checked')) {
+			p.drawRectangle();
+		}
 
 		// show poses
 		p.checkPose();
@@ -160,7 +171,7 @@ var video = function (p) {
 			if (p.poses[0].hasOwnProperty("pose")) {
 
 				if (p.poses[0].pose.hasOwnProperty("score")) {
-					if (p.poses[0].pose.score < 0.4) {
+					if (p.poses[0].pose.score < 0.2) {
 						// no poses
 						// no baby
 						p.showAlert('no_baby');
@@ -330,13 +341,17 @@ var video = function (p) {
 				alertCard.addClass('green-text');
 				break;
 		}
-	}
+	};
 
 	// sending alert
 	// send types are
 	// 		danger
 	//		warning
 	p.sendAlert = function (alertType = 'danger') {
+
+		if (!($('#smsAlertSwitch').prop('checked') || $('#callAlertSwitch').prop('checked'))) {
+			return;
+		}
 
 		if (p.isSendAlert) {
 			p.print('alert already requested');
@@ -358,7 +373,17 @@ var video = function (p) {
 			p.isSendAlert = false; // give chance to next request
 			Materialize.Toast.removeAll();
 		});
-	}
+	};
+
+	p.makeCapture = function () {
+		// hide draw elements
+
+		// save canvas
+		p.saveCanvas();
+		p.print('save captured image');
+		// show elements
+	};
+
 };
 
 new p5(video, "videoContainer");

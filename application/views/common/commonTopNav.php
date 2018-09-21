@@ -14,6 +14,10 @@
 		color: green;
 	}
 
+	.switch label {
+		cursor: pointer;
+		font-size: 1rem;
+	}
 </style>
 
 <div class="navFixedTop">
@@ -72,7 +76,8 @@
 					<a class="waves-effect waves-green sideNavBtn userPlayground" href="<?php echo base_url(); ?>user/playground">Playground</a>
 				</li>
 				<li>
-					<a class="waves-effect waves-green sideNavBtn userHistory" href="<?php echo base_url(); ?>user/history">Baby History
+					<a class="waves-effect waves-green sideNavBtn userHistory" href="<?php echo base_url(); ?>user/history">Baby
+						History
 					</a>
 				</li>
 				<li>
@@ -113,13 +118,103 @@
 </div>
 <ul id="dropdown1" class="dropdown-content">
 	<li>
-		<a href="<?php echo base_url(); ?>user/settings">Settings</a>
+		<a class="waves-effect modal-trigger" href="#settingModal">Settings</a>
 	</li>
 	<li class="logoutBtn">
 		<a>Logout</a>
 	</li>
 </ul>
 
+<!-- setting modal -->
+<div id="settingModal" class="modal modal-fixed-footer">
+	<div class="modal-content">
+		<h4>Settings</h4>
+
+		<div class="row" style="margin-bottom:0;">
+			<div class="col s12">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+					magna aliqua.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12" style="margin-top:10px; margin-bottom:0;">
+				<div class="row">
+					<p>Visual Element Settings</p>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m4">
+						<!-- safe zone switch -->
+						<div class="switch">
+							<label>
+								Show safe zone
+								<input id="safeZoneSwitch" type="checkbox" checked>
+								<span class="lever"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m4">
+						<!-- face key point switch -->
+						<div class="switch">
+							<label>
+								Show pose key points
+								<input id="poseKeyPointSwitch" type="checkbox" checked>
+								<span class="lever"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m4">
+						<!-- skeleton switch -->
+						<div class="switch">
+							<label>
+								Show skeleton
+								<input id="skeletonSwitch" type="checkbox" checked>
+								<span class="lever"></span>
+							</label>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12" style="margin-top:10px; margin-bottom:0;">
+				<div class="row">
+					<p>Notification Settings</p>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m4">
+						<!-- safe zone switch -->
+						<div class="switch">
+							<label>
+								Send SMS alert
+								<input id="smsAlertSwitch" type="checkbox" checked>
+								<span class="lever"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col s12 m4">
+						<!-- face key point switch -->
+						<div class="switch">
+							<label>
+								Send call alert
+								<input id="callAlertSwitch" type="checkbox" checked>
+								<span class="lever"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
+	</div>
+</div>
 
 <script type="text/javascript">
 	$(document).ready(function () {

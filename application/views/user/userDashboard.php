@@ -91,6 +91,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			height: auto;
 		}
 
+		.switch label input[type=checkbox]:checked + .lever:after {
+			background-color: #388e3c;
+		}
+
+		.switch label input[type=checkbox]:checked + .lever {
+			background-color: #9acf9d;
+		}
+
 	</style>
 
 <body>
@@ -114,12 +122,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<!-- baby face card -->
 					<div class="col s12">
 						<div class="card-panel grey lighten-5 z-depth-1">
-							<div class="row valign-wrapper" style="margin-bottom:0; min-height:50px;">
+							<div id="faceCard" class="row valign-wrapper" style="margin-bottom:0; min-height:50px;">
+								<!-- hidden variable -->
+								<input id="isBabyCry" value="false" type="hidden">
 								<div class="col s2">
-								<i class="small material-icons">sentiment_very_satisfied</i>
+									<!-- icon for message card -->
+									<i id="faceIcon" class="small material-icons">sentiment_very_satisfied</i>
 								</div>
-								<div class="col s10">
-									<span class="black-text">
+								<div class="col s10 ">
+									<span id="faceMessage" class="">
 										Your baby in a HAPPY face
 									</span>
 								</div>
@@ -160,11 +171,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="row valign-wrapper">
 			<div class="col s12 m8">
 				<div class="card-panel grey lighten-5 z-depth-1">
-					<div class="row valign-wrapper">
-						<div class="col s12">
+					<div class="row valign-wrapper" style="margin-bottom:0;">
+						<div class="col s12 m2 center-align">
+							<a id="captureBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">camera_alt</i></a>
+						</div>
+						<div class="col s12 m10">
 							<span class="black-text">
-								Hint! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-								magna aliqua.
+								Hint! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua.
 							</span>
 						</div>
 					</div>
@@ -210,6 +224,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <!-- customized files for dashboard view -->
 <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-video.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-audio.js"></script>
-<!-- <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard.js?<?=$this->config->item('js_version');?>"></script> -->
+<script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard.js?<?=$this->config->item('js_version');?>"></script>
 
 </html>

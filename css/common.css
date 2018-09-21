@@ -126,6 +126,10 @@ textarea.materialize-textarea.invalid:focus,
   animation: pulse 1s infinite;
 }
 
+div#roundPreloader {
+    top: 50px;
+}
+
 @keyframes pulse {
   0%, 100% {
     width: 80px;

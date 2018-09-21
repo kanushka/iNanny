@@ -4,6 +4,7 @@ $(document).ready(function () {
 
 	//test
 	loadBabysStatusChart();
+	loadBabysSleepChart();
 
 	console.log('baby history ready');
 	$('#roundPreloader').fadeOut();
@@ -41,7 +42,8 @@ function convertHeightListToArrays(heightList) {
 }
 
 function loadBabysHeightChart(labels, data) {
-	console.log(data);
+	// console.log(data);
+	// console.log(labels);
 	var ctx = $('#babysHeightChart');
 	var myLineChart = new Chart(ctx, {
 		type: 'line',
@@ -49,17 +51,27 @@ function loadBabysHeightChart(labels, data) {
 			labels: labels,
 			datasets: [{
 					label: "Height",
-					// backgroundColor: '#388e3c',
+					backgroundColor: 'rgba(0, 180, 50, 0.4)',
 					borderColor: '#388e3c',
 					data: data,
 					lineTension: 0,
+					pointHoverRadius: 10
 				},
 				{
-					label: "Default",
-					// backgroundColor: '#388e3c',
-					borderColor: '#222e3c',
-					data: ["50", "52", "54", "57", "60", "64", "68", "73"],
+					label: "High height",
+					backgroundColor: 'rgba(0, 57, 92, 0.2)',
+					borderColor: '#0091ea',
+					data: ["50", "52", "56", "62", "70", "80", "92", "106"],
 					lineTension: 0,
+					fill: "1"
+				},
+				{
+					label: "Low height",
+					backgroundColor: 'rgba(0, 57, 92, 0.2)',
+					borderColor: '#0091ea',
+					data: ["40", "41", "43", "46", "50", "55", "61", "68"],
+					lineTension: 0,
+					fill: "-1"
 				}
 			],
 		},
@@ -69,7 +81,7 @@ function loadBabysHeightChart(labels, data) {
 					ticks: {
 						suggestedMin: 30,
 						// suggestedMax: 10
-						stepSize: 5
+						// stepSize: 5
 					}
 				}]
 			}
@@ -116,17 +128,27 @@ function loadBabysWeightChart(labels, data) {
 			labels: labels,
 			datasets: [{
 					label: "Weight",
-					// backgroundColor: '#388e3c',
+					backgroundColor: 'rgba(0, 180, 50, 0.4)',
 					borderColor: '#388e3c',
 					data: data,
 					lineTension: 0,
+					pointHoverRadius: 10
 				},
 				{
-					label: "Default",
-					// backgroundColor: '#388e3c',
-					borderColor: '#222e3c',
-					data: ["2", "3", "4", "5", "6", "7"],
+					label: "High weight",
+					backgroundColor: 'rgba(0, 57, 92, 0.2)',
+					borderColor: '#0091ea',
+					data: ["3", "3.5", "4.5", "6", "8", "10.5"],
 					lineTension: 0,
+					fill: "1"
+				},
+				{
+					label: "Low weight",
+					backgroundColor: 'rgba(0, 57, 92, 0.2)',
+					borderColor: '#0091ea',
+					data: ["2", "2.2", "2.6", "3.2", "4", "5"],
+					lineTension: 0,
+					fill: "-1"
 				}
 			],
 		},
@@ -136,7 +158,46 @@ function loadBabysWeightChart(labels, data) {
 					ticks: {
 						suggestedMin: 1,
 						// suggestedMax: 10
-						stepSize: 1
+						// stepSize: 5
+					}
+				}]
+			}
+		}
+	});
+}
+
+
+function loadBabysSleepChart(labels, data) {
+
+	var ctx = $('#babysSleepChart');
+	var myLineChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: ["24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "2 July, 2018"],
+			datasets: [{
+				label: "Sleeping line",
+				fill: false,
+				steppedLine: true,
+				borderColor: '#388e3c',
+				data: ["1", "2", "2", "2", "1", "1", "2", "2"],
+				lineTension: 0,
+				pointHoverRadius: 10
+			}, ],
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						suggestedMin: 0,
+						suggestedMax: 3,
+						stepSize: 1,
+						callback: function (value, index, values) {
+							if (value == 2) {
+								return "sleep";
+							} else if (value == 1) {
+								return "awake";
+							}
+						}
 					}
 				}]
 			}
@@ -150,13 +211,20 @@ function loadBabysStatusChart(labels, data) {
 	var myLineChart = new Chart(ctx, {
 		type: 'radar',
 		data: {
-			labels: ['Sleepin', 'Playing', 'Eating', 'Laughing', 'Crying'],
+			labels: ['Sleep', 'Play', 'Eat', 'Laugh', 'Cry'],
 			datasets: [{
-				label: "Babys' Status",
-				// backgroundColor: '#388e3c',
-				borderColor: '#388e3c',
-				data: [40, 10, 4, 10, 20],
-			}],
+					label: "Babys' Current Status",
+					backgroundColor: 'rgba(0, 180, 50, 0.2)',
+					borderColor: '#388e3c',
+					data: [40, 30, 30, 20, 30],
+				},
+				// {
+				// 	label: "Default Status",
+				// 	backgroundColor: 'rgba(0, 57, 92, 0.2)',
+				// 	borderColor: '#0091ea',
+				// 	data: [40, 30, 40, 20, 30],
+				// }
+			],
 		},
 		options: {
 
