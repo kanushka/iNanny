@@ -23,27 +23,27 @@ class Migration_add_baby_status  extends CI_Migration
         // add seeds
         $data = array(
             array(
-                'id' => '301',
-                'status' => 'happy'
-            ),
-            array(
-                'id' => '302',
-                'status' => 'sad'
-            ),
-            array(
-                'id' => '303',
-                'status' => 'angry'
-            ),
-            array(
-                'id' => '304',
-                'status' => 'cry'
-            ),
-            array(
-                'id' => '305',
+                'id' => '1',
                 'status' => 'sleep'
             ),
             array(
-                'id' => '306',
+                'id' => '2',
+                'status' => 'happy'
+            ),
+            array(
+                'id' => '3',
+                'status' => 'angry'
+            ),
+            array(
+                'id' => '4',
+                'status' => 'cry'
+            ),
+            array(
+                'id' => '5',
+                'status' => 'sad'
+            ),
+            array(
+                'id' => '6',
                 'status' => 'suprise'
             )
         );

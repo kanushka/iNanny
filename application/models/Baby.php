@@ -179,4 +179,51 @@ class Baby extends CI_Model
         $result = $query->result();
         return $result ? $result : false;
     }
+
+    public function getBabySleepingStatusByBabyId($babyId, $limit = 20)
+    {
+        $this->db->select('*');
+        $this->db->from('babys_activity_status');
+        $this->db->where('baby_id', $babyId);
+        $this->db->order_by('added_at', 'DESC');
+        $this->db->limit($limit);
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result ? $result : false;
+    }
+
+    public function getBabyActivitiesByBabyId($babyId, $startDate, $endDate)
+    {
+        $this->db->select('babys_activity_status.status AS status_id, baby_status.status, COUNT(babys_activity_status.status) AS count');
+        $this->db->from('babys_activity_status');
+        $this->db->where('baby_id', $babyId);
+        $this->db->where('added_at > ', $startDate);
+        $this->db->where('added_at < ', $endDate);
+        $this->db->join('baby_status', 'baby_status.id = babys_activity_status.status');
+        $this->db->group_by('babys_activity_status.status');
+        $this->db->order_by('babys_activity_status.status', 'ASC');
+        $query = $this->db->get();
+
+        $result = $query->result();
+        return $result ? $result : false;
+    }
+
+    // add baby's activity status
+    //  1 - sleep
+    //  2 - awake
+    //  3.. - other
+
+    public function addBabyActivityStatus($babyId, $status = 2)
+    {
+        $data = array(
+            'baby_id' => $babyId,
+            'status' => $status,
+            'added_at' => date('Y-m-d H:i:s', time()),
+        );
+
+        $this->db->insert('babys_activity_status', $data);
+
+        return $this->db->insert_id();
+    }
 }

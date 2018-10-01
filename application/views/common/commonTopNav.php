@@ -87,7 +87,7 @@
 					<div class="divider"></div>
 				</li>
 				<li>
-					<a class="waves-effect" href="">Settings</a>
+					<a class="waves-effect modal-trigger" href="#settingModal">Settings</a>
 				</li>
 				<li>
 					<a class="waves-effect logoutBtn" href="">Logout</a>
@@ -148,32 +148,58 @@
 					<div class="col s12 m4">
 						<!-- safe zone switch -->
 						<div class="switch">
-							<label>
-								Show safe zone
-								<input id="safeZoneSwitch" type="checkbox" checked>
-								<span class="lever"></span>
-							</label>
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Show safe zone
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="safeZoneSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col s12 m4">
 						<!-- face key point switch -->
 						<div class="switch">
-							<label>
-								Show pose key points
-								<input id="poseKeyPointSwitch" type="checkbox" checked>
-								<span class="lever"></span>
-							</label>
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Show pose key points
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="poseKeyPointSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
 						</div>
+
 					</div>
 					<div class="col s12 m4">
 						<!-- skeleton switch -->
 						<div class="switch">
-							<label>
-								Show skeleton
-								<input id="skeletonSwitch" type="checkbox" checked>
-								<span class="lever"></span>
-							</label>
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Show skeleton
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="skeletonSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
 						</div>
+
 
 					</div>
 				</div>
@@ -190,22 +216,40 @@
 					<div class="col s12 m4">
 						<!-- safe zone switch -->
 						<div class="switch">
-							<label>
-								Send SMS alert
-								<input id="smsAlertSwitch" type="checkbox" checked>
-								<span class="lever"></span>
-							</label>
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Send SMS alert
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="smsAlertSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
 						</div>
+
 					</div>
 					<div class="col s12 m4">
 						<!-- face key point switch -->
 						<div class="switch">
-							<label>
-								Send call alert
-								<input id="callAlertSwitch" type="checkbox" checked>
-								<span class="lever"></span>
-							</label>
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Send call alert
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="callAlertSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>

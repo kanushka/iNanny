@@ -69,7 +69,11 @@ $route['user/(:num)/password']['POST'] = 'user/InitialSetupController/setPasswor
 $route['user/credentials']['POST'] = 'user/LoginController/checkCredentials';
 
 $route['user/dashboard'] = 'user/DashboardController';
+$route['babies/stream']['GET'] = 'user/DashboardController/getStreamUrl';
 $route['user/send/alert']['POST'] = 'user/DashboardController/sendAlert';
+$route['babies/activities/limit/(:num)']['GET'] = 'user/DashboardController/getBabysActivityStatus/$1';
+$route['babies/activities/day-limit/(:num)/group']['GET'] = 'user/DashboardController/getBabysActivityStatusGroupByDay/$1';
+$route['babies/activities']['POST'] = 'user/DashboardController/sendAlert';
 
 $route['user/playground'] = 'user/PlaygroundController';
 

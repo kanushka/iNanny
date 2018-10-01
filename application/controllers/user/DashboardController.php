@@ -88,7 +88,7 @@ class DashboardController extends CI_Controller {
 
         foreach ($relations as $key => $relation) {
 
-            $contact = $this->str_replace_first('0', '+94', $relation->contact);
+            $contact = $this->strReplaceFirst('0', '+94', $relation->contact);
             
             // if warning
             // send SMS
@@ -182,10 +182,88 @@ class DashboardController extends CI_Controller {
         }
     }
 
-    private function str_replace_first($from, $to, $content)
+    private function strReplaceFirst($from, $to, $content)    
     {
         $from = '/'.preg_quote($from, '/').'/';
 
         return preg_replace($from, $to, $content, 1);
     }
+
+    public function addBabysActivityStatus(){
+        $sessionData = $this->session->userdata();
+        if (!$sessionData) {
+            return $this->setResponse(true, "unauthorized access");
+        }
+
+        $babyId = $sessionData['babyId'];
+        $status = $this->input->post('status');
+
+        // add baby new activity
+        $activityId = $this->Baby->addBabyActivityStatus($babyId, $status);
+        if(!$activityId){
+            return $this->setResponse(true, "something went wrong. cannot add baby's status");
+        }
+
+        return $this->setResponse(false, "activity status added successfully");
+    }
+
+    public function getBabysActivityStatus($limit = 20){
+        $sessionData = $this->session->userdata();
+        if (!$sessionData) {
+            return $this->setResponse(true, "unauthorized access");
+        }
+
+        $babyId = $sessionData['babyId'];
+
+        // get babies all activities with group
+        // get babies last activities
+        $activities = $this->Baby->getBabySleepingStatusByBabyId($babyId, $limit);
+        if(!$activities){
+            return $this->setResponse(true, "something went wrong. cannot add baby's last activities");
+        }
+
+        return $this->setResponse(false, null, ['activities' => $activities]);
+    }
+
+    public function getBabysActivityStatusGroupByDay($numberOfDates = 1){
+        $sessionData = $this->session->userdata();
+        if (!$sessionData) {
+            return $this->setResponse(true, "unauthorized access");
+        }
+
+        $babyId = $sessionData['babyId'];
+        
+        // create dates for filter
+        $today = new DateTime();
+        $todayNow = $today->format("Y-m-d H:i:s");
+        $today->modify("-{$numberOfDates} day");
+        $lastDate = $today->format("Y-m-d H:i:s");
+
+        // get babies all activities with group
+
+        $activities = $this->Baby->getBabyActivitiesByBabyId($babyId, $lastDate, $todayNow);
+        if(!$activities){
+            return $this->setResponse(true, "something went wrong. cannot add baby's last activities");
+        }
+
+        return $this->setResponse(false, null, ['status' => $activities]);
+    }
+
+
+    public function getStreamUrl(){
+        $sessionData = $this->session->userdata();
+        if (!$sessionData) {
+            return $this->setResponse(true, "unauthorized access");
+        }
+
+        $babyId = $sessionData['babyId'];        
+        // create stream URL
+        $url = "inanny-" . $babyId . "-" . date("Y/m/d");        
+        // encrypt url
+        $cryptUrl = $this->Crypt->urlEncode($url);
+
+        return $this->setResponse(false, null, ['url' => 'https://appr.tc/r/', 'key' => $cryptUrl]);
+    }
+
+
 }

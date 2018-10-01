@@ -1,10 +1,8 @@
 $(document).ready(function () {
 	getBabysHeightData();
 	getBabysWeightData();
-
-	//test
-	loadBabysStatusChart();
-	loadBabysSleepChart();
+	getBabysLastActivities();
+	getBabysActivityGroups();
 
 	console.log('baby history ready');
 	$('#roundPreloader').fadeOut();
@@ -167,19 +165,52 @@ function loadBabysWeightChart(labels, data) {
 }
 
 
+function getBabysLastActivities(limit = 20) {
+	let data = null;
+
+	$.get(`${BASE_URL}babies/activities/limit/${limit}`,
+		function (data, status) {
+			console.log(data);
+
+			// convert data to arrays and show data in chart
+			data = convertActivityListToArrays(data.activities);
+			loadBabysSleepChart(data.labels, data.data);
+		});
+}
+
+function convertActivityListToArrays(activityList) {
+	let dates = [];
+	let activity = [];
+
+	// reverse array
+	activityList.reverse();
+
+	for (let key in activityList) {
+		if (activityList.hasOwnProperty(key)) {
+			dates.push(formatTime(new Date(activityList[key].added_at)));
+			activity.push((activityList[key].status) > 1 ? 2 : 1);
+		}
+	}
+
+	return {
+		labels: dates,
+		data: activity
+	};
+}
+
 function loadBabysSleepChart(labels, data) {
 
 	var ctx = $('#babysSleepChart');
 	var myLineChart = new Chart(ctx, {
 		type: 'line',
 		data: {
-			labels: ["24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "24 May, 2018", "2 July, 2018"],
+			labels: labels,
 			datasets: [{
 				label: "Sleeping line",
 				fill: false,
 				steppedLine: true,
 				borderColor: '#388e3c',
-				data: ["1", "2", "2", "2", "1", "1", "2", "2"],
+				data: data,
 				lineTension: 0,
 				pointHoverRadius: 10
 			}, ],
@@ -193,9 +224,9 @@ function loadBabysSleepChart(labels, data) {
 						stepSize: 1,
 						callback: function (value, index, values) {
 							if (value == 2) {
-								return "sleep";
-							} else if (value == 1) {
 								return "awake";
+							} else if (value == 1) {
+								return "sleep";
 							}
 						}
 					}
@@ -206,17 +237,50 @@ function loadBabysSleepChart(labels, data) {
 }
 
 
+function getBabysActivityGroups(limit = 1) {
+	let data = null;
+
+	$.get(`${BASE_URL}babies/activities/day-limit/${limit}/group`,
+		function (data, status) {
+			console.log(data);
+
+			// convert data to arrays and show data in chart
+			data = convertActivityGroupsToArrays(data.status);
+			loadBabysStatusChart(data.labels, data.data);
+		});
+}
+
+function convertActivityGroupsToArrays(activityList) {
+	let status = [];
+	let count = [];
+
+	// reverse array
+	activityList.reverse();
+
+	for (let key in activityList) {
+		if (activityList.hasOwnProperty(key)) {
+			status.push(activityList[key].status);
+			count.push((activityList[key].count) * 5);
+		}
+	}
+
+	return {
+		labels: status,
+		data: count
+	};
+}
+
 function loadBabysStatusChart(labels, data) {
 	var ctx = $('#babysStatusChart');
 	var myLineChart = new Chart(ctx, {
 		type: 'radar',
 		data: {
-			labels: ['Sleep', 'Play', 'Eat', 'Laugh', 'Cry'],
+			labels: labels,
 			datasets: [{
 					label: "Babys' Current Status",
 					backgroundColor: 'rgba(0, 180, 50, 0.2)',
 					borderColor: '#388e3c',
-					data: [40, 30, 30, 20, 30],
+					data: data,
 				},
 				// {
 				// 	label: "Default Status",
@@ -232,8 +296,6 @@ function loadBabysStatusChart(labels, data) {
 	});
 }
 
-
-
 function formatDate(date) {
 	var monthNames = [
 		"January", "February", "March",
@@ -248,3 +310,14 @@ function formatDate(date) {
 
 	return day + ' ' + monthNames[monthIndex] + ', ' + year;
 }
+
+var formatTime = function (date) {
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var ampm = hours >= 12 ? 'PM' : 'AM';
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+	var strTime = hours + ':' + minutes + ' ' + ampm;
+	return strTime;
+};

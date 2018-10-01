@@ -111,11 +111,10 @@ new p5(audio, "audioContainer");
 
 var player = function (p) {
 	p.songList = [
-		"twinkle.mp3",
-		"rockabyebaby.mp3",
-		"hushlittlebaby.mp3",
-		"rockabyebaby.mp3",
-		"lullabygoodnight.mp3",
+		"Twinkle.mp3",
+		"RockabyeBaby.mp3",
+		"PrettyLittleHorses.mp3",
+		"LullabyGoodnight.mp3",
 	];
 
 	p.loadedSongIndex = 0;
@@ -129,7 +128,7 @@ var player = function (p) {
 		// $("#roundPreloader").fadeOut();
 
 		// load song play when baby is crying
-		p.songForCry = p.loadSound('../audio/songs/johnsonsbabybathtimesong.mp3');
+		p.songForCry = p.loadSound('../audio/songs/JohnsonsBabyBathTimeSong.mp3');
 	};
 
 	p.draw = function () {

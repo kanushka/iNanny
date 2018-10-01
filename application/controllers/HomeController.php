@@ -84,7 +84,7 @@ class HomeController extends CI_Controller
 
         // send email
         $callbackUrl = $this->config->item('base_url') . 'user/' . $this->Crypt->urlEncode($relationId) . '/register';
-        $emailResponse = $this->__sendEmail($firstName, $callbackUrl, $email);
+        $emailResponse = $this->__sendEmailByPhpMailer($firstName, $callbackUrl, $email);
         if ($emailResponse['error']) {
             log_message('error', 'cannot send confirmation email -> ' . (isset ($emailResponse['msg'] ) ? $emailResponse['msg'] : null));
             return $this->setResponse(true, "somthing went wrong. cannot send confirmation email to $email", ['email_staus' => (isset ($emailResponse['msg'] ) ? $emailResponse['msg'] : null), 'callback' => $callbackUrl]);

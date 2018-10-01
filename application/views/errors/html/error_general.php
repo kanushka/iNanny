@@ -21,7 +21,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		p {
 			font-size: 18px;
-			margin-top: 60px;
 			color: #4A4A4A;
 			text-align: center;
 		}
@@ -41,9 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 0px;">
-		<div class="col s12 m12 l10 offset-l1 xl6 offset-xl3" style="height: 50vh; display: flex; align-items: center;  flex-direction: column;">
+		<div class="col s12 m12 l10 offset-l1 xl6 offset-xl3" style="height: 50vh; display: flex; align-items: center;  flex-direction: column; margin-top: 60px">
 			<?php echo $message; ?>
-			<p style="font-size: 18px; margin-top: 60px; color: #4A4A4A; text-align: center;">Not to worry you can go back to
+			<p style="font-size: 18px; color: #4A4A4A; text-align: center; margin-bottom: 60px">Not to worry you can go back to
 				our home page by clicking the below button</p>
 			<a class="waves-effect waves-light btn-large primary-btn-color" href="<?php echo base_url(); ?>">Back to home page</a>
 		</div>

@@ -8,4 +8,4 @@
 
 <!-- hidden variables -->
 <input type="hidden" id="baseUrl" value="<?php echo base_url(); ?>">
-<input type="hidden" id="babyId" value="<?php echo $babyId; ?>">
+<input type="hidden" id="babyId" value="<?php echo isset($babyId) ? $babyId : null ?>">
