@@ -198,8 +198,8 @@ class Baby extends CI_Model
         $this->db->select('babys_activity_status.status AS status_id, baby_status.status, COUNT(babys_activity_status.status) AS count');
         $this->db->from('babys_activity_status');
         $this->db->where('baby_id', $babyId);
-        $this->db->where('added_at > ', $startDate);
-        $this->db->where('added_at < ', $endDate);
+        // $this->db->where('added_at > ', $startDate); for testing
+        // $this->db->where('added_at < ', $endDate);
         $this->db->join('baby_status', 'baby_status.id = babys_activity_status.status');
         $this->db->group_by('babys_activity_status.status');
         $this->db->order_by('babys_activity_status.status', 'ASC');
