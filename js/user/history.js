@@ -243,6 +243,10 @@ function getBabysActivityGroups(limit = 1) {
 	$.get(`${BASE_URL}babies/activities/day-limit/${limit}/group`,
 		function (data, status) {
 			console.log(data);
+			if (data.error) {
+				Materialize.toast('Something went wrong. couldn\'t load babies activities', 4000);
+				return;
+			}
 
 			// convert data to arrays and show data in chart
 			data = convertActivityGroupsToArrays(data.status);
