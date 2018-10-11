@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>iNanny</title>
-		<?php $this->load->view('common/commonHeader'); ?>
+		<?php $this->load->view('common/commonHeader');?>
 	</head>
 
 	<body style="height: 100vh; overflow: hidden;">
@@ -30,9 +30,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				text-align: center;
 			}
 
+			.signInBtn {
+				margin-left: 30%;
+			}
+
 			@media only screen and (max-width: 425px) {
-				#signInBtn {
-					width: 90%;
+				.signInBtn {
+					margin-left: 0;
 				}
 			}
 
@@ -60,22 +64,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<input id="password" type="password" class="validate">
 									<label for="password">Password</label>
 								</div>
-								<div class="col s12 m6 l5" style="width: 100%; margin-top:20px;">
-									<a class="waves-effect waves-light btn-large primary-btn-color" id="signInBtn" style="display: flex; align-items: center; justify-content: center; width: 40%; margin: auto;">Sign In
-										<div class="preloader-wrapper small active" style="margin-left:10px; display: none;" id="signInSprinner">
-											<div class="spinner-layer" style="border-color: #fff;">
-												<div class="circle-clipper left">
-													<div class="circle"></div>
-												</div>
-												<div class="gap-patch">
-													<div class="circle"></div>
-												</div>
-												<div class="circle-clipper right">
-													<div class="circle"></div>
+								<div class="col s12" style="width: 100%; margin-top:20px;">
+									<div class="col s12 m8 l5 signInBtn">
+										<a class="waves-effect waves-light btn-large primary-btn-color" id="signInBtn" style="display: flex; align-items: center; justify-content: center; margin: auto;">Sign In
+											<div class="preloader-wrapper small active" style="margin-left:10px; display: none;" id="signInSprinner">
+												<div class="spinner-layer" style="border-color: #fff;">
+													<div class="circle-clipper left">
+														<div class="circle"></div>
+													</div>
+													<div class="gap-patch">
+														<div class="circle"></div>
+													</div>
+													<div class="circle-clipper right">
+														<div class="circle"></div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</a>
+										</a>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -83,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-		<?php $this->load->view('common/commonFooter'); ?>
+		<?php $this->load->view('common/commonFooter');?>
 
 		<script type="text/javascript">
 			$(document).ready(function () {
@@ -96,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</script>
 
 
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/user/login.js?<?= $this->config->item('js_version'); ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>js/user/login.js?<?=$this->config->item('js_version');?>"></script>
 
 	</body>
 
