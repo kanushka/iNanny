@@ -124,7 +124,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="card">
 					<div class="card-image">
 						<img src="<?= isset($babyDefaultImageUrl) ? $babyDefaultImageUrl : base_url().'img/profile/sample_img.jpg' ?>">
-						<span class="card-title">Card Title</span>
+						<span class="card-title">
+							<?= isset($babyName) ? $babyName[0] : 'Baby' ?></span>
 						<a id='streamBtn' class="btn-floating btn-large halfway-fab waves-effect waves-light green"><i class="material-icons">videocam</i></a>
 					</div>
 					<div class="card-content">
