@@ -239,8 +239,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script type="text/javascript" src="<?php echo base_url(); ?>js/libs/fabric/fabric.min.js"></script>
 
 <!-- customized files for dashboard view -->
-<script id="dashboardVideoScript" type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-video.js<?=$this->config->item('js_version');?>"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-audio.js<?=$this->config->item('js_version');?>"></script>
+<script id="dashboardVideoScript" type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-video.js?<?=$this->config->item('js_version');?>"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard-audio.js?<?=$this->config->item('js_version');?>"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/user/dashboard.js?<?=$this->config->item('js_version');?>"></script>
 
 </html>
