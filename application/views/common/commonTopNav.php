@@ -73,7 +73,7 @@
 					<a class="waves-effect waves-green sideNavBtn userDashboard" href="<?php echo base_url(); ?>user/dashboard">Dashboard</a>
 				</li>
 				<li>
-					<a class="waves-effect waves-green sideNavBtn userPlayground" href="<?php echo base_url(); ?>user/playground">Playground</a>
+					<a class="waves-effect waves-green sideNavBtn userPlayground hide-on-med-and-down" href="<?php echo base_url(); ?>user/playground">Playground</a>
 				</li>
 				<li>
 					<a class="waves-effect waves-green sideNavBtn userHistory" href="<?php echo base_url(); ?>user/history">Baby
