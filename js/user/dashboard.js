@@ -12,10 +12,10 @@ $(document).ready(function () {
 
 	getBabyStream();
 
-	if (IS_MOBILE) {
-		//  remove video element
-		$('#dashboardVideoScript').remove();
-	}
+	// if (IS_MOBILE) {
+	// 	//  remove video element
+	// 	$('#dashboardVideoScript').remove();
+	// }
 });
 
 $('#streamBtn').click((e) => {
@@ -29,7 +29,7 @@ $('#streamBtn').click((e) => {
 		} else {
 			//Browser has blocked it
 			alert('Please allow popups for this website');
-		}					
+		}
 	}
 });
 
@@ -61,9 +61,9 @@ function getBabyStream() {
 		function (data, status) {
 			if (!data.error) {
 				STREAM_URL = data.url + data.key;
-				console.log('stream url', STREAM_URL);
+				console.log('stream url :', STREAM_URL);
 
-				if (!IS_MOBILE) {					
+				if (!IS_MOBILE) {
 					// open stream page
 					console.log('opening stream page');
 					var win = window.open(STREAM_URL, '_blank');
@@ -73,7 +73,7 @@ function getBabyStream() {
 					} else {
 						//Browser has blocked it
 						alert('Please allow popups for this website');
-					}					
+					}
 				}
 			}
 		});
