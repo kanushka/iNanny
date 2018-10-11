@@ -70,6 +70,7 @@ class LoginController extends CI_Controller
             'relationEmail' => $relation->email,
             'babyId' => $baby->id,
             'babyName' => [$baby->first_name, $baby->last_name],
+            'babyDefaultImageUrl' => $baby->image_url,
             'loggedIn' => true,
         );
 
