@@ -111,7 +111,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <script type="text/javascript" src="<?php echo base_url(); ?>js/libs/fabric/fabric.min.js"></script>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>js/user/playground-video.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/user/playground-video.js<?=$this->config->item('js_version');?>"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/user/playground.js?<?= $this->config->item('js_version'); ?>"></script>
 
 </html>
