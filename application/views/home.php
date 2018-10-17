@@ -10,9 +10,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/materialize.min.css" media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css" media="screen,projection" />
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/common.css" media="screen,projection" />
 
-	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url(); ?>img/ico/apple-icon-57x57.png">
+	<!-- <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url(); ?>img/ico/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>img/ico/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url(); ?>img/ico/apple-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>img/ico/apple-icon-76x76.png">
@@ -28,7 +29,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<link rel="manifest" href="<?php echo base_url(); ?>img/ico/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="<?php echo base_url(); ?>img/ico/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+	<meta name="theme-color" content="#ffffff"> -->
+
+	<link rel="manifest" href="manifest.json">
+
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="iNanny">
+	<meta name="apple-mobile-web-app-title" content="iNanny">
+	<meta name="theme-color" content="#2e7d32">
+	<meta name="msapplication-navbutton-color" content="#2e7d32">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="msapplication-starturl" content="/user/login">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url(); ?>img/ico/android-icon-96x96.png">
+	<link rel="apple-touch-icon" type="image/png" sizes="96x96" href="<?php echo base_url(); ?>img/ico/android-icon-96x96.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="<?php echo base_url(); ?>img/ico/android-icon-192x192.png">
+	<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="<?php echo base_url(); ?>img/ico/android-icon-192x192.png">
+
 	<title>iNanny</title>
 
 </head>
@@ -301,7 +320,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	</div>
 	<div class="container com-features">
 		<div class="row no-mgn-btm"></div>
-		<div class="row ele-com-features-row no-mgn-btm">
+		<div class="row ele-com-features-row no-mgn-btm wow">
 			<div class="col s12 m4 ele-single-feature">
 				<h2 class="center green-text"><i class="material-icons" style="font-size:60px;">flash_on</i></h2>
 				<p class="ele-feature-title">Lorem ipsum dolor</p>
@@ -322,17 +341,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="row ele-download no-mgn-btm">
-			<div class="col s12 m6">
-				<p class="ele-download-title">Lorem ipsum dolor!</p>
-				<p class="ele-download-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-					voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p class="ele-download-detail">Download our iNanny app today!</p>
-				<img src="<?php echo base_url(); ?>img/googlePlay.png" class="googlePlay-img" />
+			<div class="wow bounceInUp">
+				<div class="col s12 m6">
+					<p class="ele-download-title">Lorem ipsum dolor!</p>
+					<p class="ele-download-detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+						ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p class="ele-download-detail">Download our iNanny app today!</p>
+					<img src="<?php echo base_url(); ?>img/googlePlay.png" class="googlePlay-img" />
+				</div>
 			</div>
-
 		</div>
 	</div>
 	<div class="row footerWrap no-mgn-btm">
@@ -428,6 +448,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </body>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/libs/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/libs/materialize.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>/js/libs/wow.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/home.js"></script>
 
 <script type="text/javascript">
@@ -451,6 +472,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			}
 		});
 	});
+
+</script>
+
+<script>
+	//This is the "Offline page" service worker
+
+	//Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+	if (navigator.serviceWorker.controller) {
+		console.log('active service worker found, no need to register')
+	} else {
+		//Register the ServiceWorker
+		navigator.serviceWorker.register('inanny-sw.js', {
+			scope: './'
+		}).then(function (reg) {
+			console.log('Service worker has been registered for scope:' + reg.scope);
+		});
+	}
 
 </script>
 

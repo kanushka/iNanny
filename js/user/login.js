@@ -2,13 +2,24 @@
 // events
 //
 
-$(document).ready(function() {});
+$(document).ready(function () {});
 
-$("#signInBtn").click(function() {
+// hide logo preloader
+
+if (deviceDetection()) {
+	setTimeout(function () {
+		$('#logoPreloader').fadeOut();
+	}, 2000);
+} else {
+	$('#logoPreloader').fadeOut();
+}
+
+
+$("#signInBtn").click(function () {
 	validateSignInForm();
 });
 
-$("#password").keypress(function(e) {
+$("#password").keypress(function (e) {
 	if (e.which == 13) {
 		// 13 - ENTER key
 		if ($("#password").val() != "") {
@@ -22,7 +33,7 @@ $("#password").keypress(function(e) {
 	}
 });
 
-$("#email").keypress(function(e) {
+$("#email").keypress(function (e) {
 	if (e.which == 13) {
 		// 13 - ENTER key
 		if ($("#email").val() != "") {
@@ -36,15 +47,15 @@ $("#email").keypress(function(e) {
 // functions
 //
 
-var validateSignInForm = function() {
+var validateSignInForm = function () {
 	let email = $("#email");
 	let password = $("#password");
 
 	if (
 		email
-			.val()
-			.replace(/^\s+|\s+$/gm, "")
-			.replace(/\s/g, "") == ""
+		.val()
+		.replace(/^\s+|\s+$/gm, "")
+		.replace(/\s/g, "") == ""
 	) {
 		email.next("label").attr("data-error", "email is required");
 		email.removeClass("valid");
@@ -64,9 +75,9 @@ var validateSignInForm = function() {
 
 	if (
 		password
-			.val()
-			.replace(/^\s+|\s+$/gm, "")
-			.replace(/\s/g, "") == ""
+		.val()
+		.replace(/^\s+|\s+$/gm, "")
+		.replace(/\s/g, "") == ""
 	) {
 		password.next("label").attr("data-error", "password is required");
 		password.removeClass("valid");
@@ -79,19 +90,18 @@ var validateSignInForm = function() {
 	checkUserCredentials(email.val(), password.val());
 };
 
-var checkUserCredentials = function(email, password) {
+var checkUserCredentials = function (email, password) {
 	console.log("request, user credentials");
 
 	// show sprinner
 	$("#signInSprinner").show();
 
 	$.post(
-		BASE_URL + "user/credentials",
-		{
+		BASE_URL + "user/credentials", {
 			email: email,
 			password: password
 		},
-		function(data, status) {
+		function (data, status) {
 			console.log(data);
 			if (!data.error) {
 				// password setup successfully
