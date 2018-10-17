@@ -1,4 +1,4 @@
-const version = "0.1.01";
+const version = "0.1.11";
 const cacheName = `inanny-${version}`;
 //This is the "Offline page" service worker
 
