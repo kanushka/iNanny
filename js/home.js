@@ -1,6 +1,6 @@
 var BASE_URL = null;
 var VALID_EMAIL = false;
-var IS_ONGOING_RQST = false;
+var IS_ONGOING_REQUEST = false;
 
 //
 // events
@@ -58,7 +58,7 @@ function checkRequestedNewEmail() {
 		return;
 	}
 
-	IS_ONGOING_RQST = true;
+	IS_ONGOING_REQUEST = true;
 	$("#email").removeClass("valid");
 
 	$.post(BASE_URL + "user/request/email", {
@@ -66,7 +66,7 @@ function checkRequestedNewEmail() {
 		},
 		function (data, status) {
 			// console.log(data);
-			IS_ONGOING_RQST = false;
+			IS_ONGOING_REQUEST = false;
 
 			if (data.error) {
 				// something went wrong

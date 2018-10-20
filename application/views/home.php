@@ -9,9 +9,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/materialize.min.css" media="screen,projection" />
-	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css" media="screen,projection" />
-	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/common.css" media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/materialize.min.css"
+	      media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css"
+	      media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/common.css"
+	      media="screen,projection" />
 
 	<!-- <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url(); ?>img/ico/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>img/ico/apple-icon-60x60.png">
@@ -452,7 +455,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/home.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function () {
+	$(document).ready(function() {
 		$(".button-collapse").sideNav();
 		$(this).scrollTop(0);
 		$('.modal').modal();
@@ -460,9 +463,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		// $('#modal1').modal('open');
 	});
 
-	$(function () {
+	$(function() {
 		var header = $(".com-nav");
-		$(window).scroll(function () {
+		$(window).scroll(function() {
 			var scroll = $(window).scrollTop();
 
 			if (scroll >= 10) {
@@ -472,7 +475,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			}
 		});
 	});
-
 </script>
 
 <script>
@@ -485,11 +487,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		//Register the ServiceWorker
 		navigator.serviceWorker.register('inanny-sw.js', {
 			scope: './'
-		}).then(function (reg) {
+		}).then(function(reg) {
 			console.log('Service worker has been registered for scope:' + reg.scope);
 		});
 	}
-
 </script>
 
 </html>

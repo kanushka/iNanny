@@ -11,7 +11,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class HomeController extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -20,7 +19,7 @@ class HomeController extends CI_Controller
 
         $this->load->model('Baby');
         $this->load->model('Relation');
-        $this->load->model('Crypt');        
+        $this->load->model('Crypt');
     }
 
     public function index()
@@ -86,16 +85,18 @@ class HomeController extends CI_Controller
         $callbackUrl = $this->config->item('base_url') . 'user/' . $this->Crypt->urlEncode($relationId) . '/register';
         $emailResponse = $this->__sendEmailByPhpMailer($firstName, $callbackUrl, $email);
         if ($emailResponse['error']) {
-            log_message('error', 'cannot send confirmation email -> ' . (isset ($emailResponse['msg'] ) ? $emailResponse['msg'] : null));
-            return $this->setResponse(true, "somthing went wrong. cannot send confirmation email to $email", ['email_staus' => (isset ($emailResponse['msg'] ) ? $emailResponse['msg'] : null), 'callback' => $callbackUrl]);
+            log_message('error', 'cannot send confirmation email -> ' . (isset($emailResponse['msg']) ? $emailResponse['msg'] : null));
+            return $this->setResponse(true, "somthing went wrong. cannot send confirmation email to $email", ['email_staus' => (isset($emailResponse['msg']) ? $emailResponse['msg'] : null), 'callback' => $callbackUrl]);
         }
 
         // send SMS to test API
         // for testing purposes
-        $smsResponse = $this->__sendSMS('+94718794546',
-            "$babyFirstName baby register by relation $firstName with email $email");
+        $smsResponse = $this->__sendSMS(
+            '+94718794546',
+            "$babyFirstName baby register by relation $firstName with email $email"
+        );
         if ($smsResponse['error']) {
-            log_message('error', 'cannot send SMS -> ' . (isset ($smsResponse['msg'] ) ? $smsResponse['msg'] : null));
+            log_message('error', 'cannot send SMS -> ' . (isset($smsResponse['msg']) ? $smsResponse['msg'] : null));
             return $this->setResponse(true, "somthing went wrong. cannot send SMS ");
         }
 
@@ -169,7 +170,6 @@ class HomeController extends CI_Controller
         $html = $this->load->view('email/registrationEmail', $data, true);
 
         try {
-
             $this->email->from('support@inanny.com', 'iNanny Support Team');
             $this->email->to($email);
             // $this->email->cc('another@another-example.com');
@@ -183,7 +183,6 @@ class HomeController extends CI_Controller
             $this->email->print_debugger(array('headers'));
 
             return ['error' => false];
-
         } catch (Exception $ex) {
             return [
                 'error' => true,
@@ -192,11 +191,12 @@ class HomeController extends CI_Controller
         }
     }
 
-    private function __initializeEmail(){
+    private function __initializeEmail()
+    {
         $config['protocol'] = 'sendmail';
         $config['mailpath'] = '/usr/sbin/sendmail';
         $config['charset'] = 'iso-8859-1';
-        $config['wordwrap'] = TRUE;
+        $config['wordwrap'] = true;
         $config['mailtype'] = 'html';
 
         $this->email->initialize($config);
@@ -229,7 +229,6 @@ class HomeController extends CI_Controller
         $token = $this->config->item('twilio_token');
 
         try {
-
             $client = new Client($sid, $token);
 
             $messageInstance = $client->messages->create(
@@ -242,8 +241,7 @@ class HomeController extends CI_Controller
             );
 
             return ['error' => false];
-
-        } catch (Exception $ex) {  
+        } catch (Exception $ex) {
             return [
                 'error' => true,
                 'msg' => $ex->getMessage(),
@@ -258,9 +256,8 @@ class HomeController extends CI_Controller
         $twilioNumber = $this->config->item('twilio_number');
 
         try {
-
             $client = new Client($sid, $token);
-            $client->account->calls->create(  
+            $client->account->calls->create(
                 $toNumber,
                 $twilioNumber,
                 array(
@@ -269,16 +266,11 @@ class HomeController extends CI_Controller
             );
 
             return ['error' => false];
-
-        } catch (Exception $ex) {  
+        } catch (Exception $ex) {
             return [
                 'error' => true,
                 'msg' => $ex->getMessage(),
             ];
         }
     }
-
-
-
-
 }
