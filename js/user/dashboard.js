@@ -10,7 +10,10 @@ $(document).ready(function () {
 	// set babies status
 	setTimeout(setBabysActivity, 1000);
 
-	getBabyStream();
+
+	if (IS_STREAM) {
+		getBabyStream();
+	}
 
 	// if (IS_MOBILE) {
 	// 	//  remove video element

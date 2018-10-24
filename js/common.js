@@ -2,6 +2,8 @@ var BASE_URL = null;
 var DEFAULT_IMG_URL = null;
 var BABY_ID = null;
 var IS_MOBILE = false; //initiate as false
+var IS_STREAM = false;
+var IS_NIGHT_VISION_ACTIVE = false; // for development test
 
 //
 // events
@@ -63,6 +65,15 @@ $('#callAlertSwitch').change(() => {
 	localStorage.setItem("callAlertSwitch", $('#callAlertSwitch').prop('checked'));
 });
 
+$('#streamVideoSwitch').change(() => {
+	IS_STREAM = $('#streamVideoSwitch').prop('checked');
+	localStorage.setItem("streamVideoSwitch", IS_STREAM);
+});
+
+$('#nightVisionSwitch').change(() => {
+	IS_NIGHT_VISION_ACTIVE = $('#nightVisionSwitch').prop('checked');
+});
+
 //
 // functions
 //
@@ -93,6 +104,9 @@ function initializeSettings() {
 
 	$('#smsAlertSwitch').prop('checked', (localStorage.getItem("smsAlertSwitch") == "true"));
 	$('#callAlertSwitch').prop('checked', (localStorage.getItem("callAlertSwitch") == "true"));
+
+	$('#streamVideoSwitch').prop('checked', (localStorage.getItem("streamVideoSwitch") == "true"));
+	IS_STREAM = localStorage.getItem("streamVideoSwitch") == "true";
 }
 
 function deviceDetection() {

@@ -214,7 +214,7 @@
 
 				<div class="row">
 					<div class="col s12 m4">
-						<!-- safe zone switch -->
+						<!-- sms alert switch -->
 						<div class="switch">
 							<div class="row">
 								<div class="col s8 left-align">
@@ -233,7 +233,7 @@
 
 					</div>
 					<div class="col s12 m4">
-						<!-- face key point switch -->
+						<!-- call alert switch -->
 						<div class="switch">
 							<div class="row">
 								<div class="col s8 left-align">
@@ -251,6 +251,54 @@
 						</div>
 
 					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12" style="margin-top:10px; margin-bottom:0;">
+				<div class="row">
+					<p>Capture Settings</p>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m4">
+						<!-- sms alert switch -->
+						<div class="switch">
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Stream video
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="streamVideoSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col s12 m4">
+						<!-- night vision switch -->
+						<div class="switch">
+							<div class="row">
+								<div class="col s8 left-align">
+									<label>
+										Night vision filter (developer mode)
+									</label>
+								</div>
+								<div class="col s4 right-align">
+									<label>
+										<input id="nightVisionSwitch" type="checkbox">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
