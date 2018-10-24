@@ -173,6 +173,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- profile view models -->
 		<div id="profileModel" class="modal modal-fixed-footer">
+
+			<div id="profileModelPreloader" class="model-prloader">
+				<div class="preloader-wrapper active" style="vertical-align: middle; top: 45%;">
+					<div class="spinner-layer spinner-green-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div id="profileModelContent" class="modal-content">
 
 				<div class="col s12">
@@ -263,6 +280,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- add/edit height modal -->
 		<div id="heightModal" class="modal">
+
+			<div id="heightModelPreloader" class="model-prloader">
+				<div class="preloader-wrapper active" style="vertical-align: middle; top: 45%;">
+					<div class="spinner-layer spinner-green-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="modal-content">
 				<h4>Babys' Height</h4>
 				<div class="row">
@@ -302,6 +336,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- add/edit weight modal -->
 		<div id="weightModal" class="modal">
+
+			<div id="weightModelPreloader" class="model-prloader">
+				<div class="preloader-wrapper active" style="vertical-align: middle; top: 45%;">
+					<div class="spinner-layer spinner-green-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="modal-content">
 				<h4>Babys' Weight</h4>
 				<div class="row">

@@ -14,6 +14,9 @@ var HAS_DAD = false;
 var HEIGHT_MODAL_NEW = true;
 var WEIGHT_MODAL_NEW = true;
 
+// check image uploading or not
+var IS_IMAGE_UPLOADING = false;
+
 //
 // events
 //
@@ -299,6 +302,9 @@ function clearProfileModel(mode) {
 
 	$('#profileModelContent').scrollTop();
 
+	$('#profileModelPreloader').fadeOut();
+	IS_IMAGE_UPLOADING = false;
+
 	OPENED_PROFILE_MODEL_TYPE = mode;
 }
 
@@ -439,6 +445,7 @@ function validateBabyModel() {
 
 function saveBabyInfo() {
 	console.log('saving baby info');
+	$('#profileModelPreloader').fadeIn();
 
 	let babyFirstName = $('#firstName').val().trim();
 	let babyLastName = $('#lastName').val().trim();
@@ -455,6 +462,10 @@ function saveBabyInfo() {
 		},
 		function (data, status) {
 			console.log(data);
+			if (!IS_IMAGE_UPLOADING) {
+				$('#profileModelPreloader').fadeOut();
+			}
+
 			if (data.error) {
 				Materialize.toast(data.msg, 4000);
 				return;
@@ -479,8 +490,11 @@ function uploadImage(type = 'BABY', profileId = null) {
 
 	if (!file_data) {
 		console.log('no image to upload');
+		IS_IMAGE_UPLOADING = false;
 		return false;
 	}
+
+	IS_IMAGE_UPLOADING = true;
 
 	let form_data = new FormData();
 
@@ -509,10 +523,15 @@ function uploadImage(type = 'BABY', profileId = null) {
 			} catch (e) {
 				Materialize.toast(response.msg, 4000);
 			}
+
+			IS_IMAGE_UPLOADING = false;
+			$('#profileModelPreloader').fadeOut();
 		},
 		error: function (response) {
 			console.log(response);
 
+			IS_IMAGE_UPLOADING = false;
+			$('#profileModelPreloader').fadeOut();
 		}
 	});
 
@@ -716,6 +735,8 @@ function validContactNum(num) {
 
 function saveRelationInfo() {
 	console.log('saving relation info');
+	$('#profileModelPreloader').fadeIn();
+
 	let relationId = $('#relationId').val().trim();
 	let firstName = $('#firstName').val().trim();
 	let lastName = $('#lastName').val().trim();
@@ -742,6 +763,10 @@ function saveRelationInfo() {
 		},
 		function (data, status) {
 			console.log(data);
+			if (!IS_IMAGE_UPLOADING) {
+				$('#profileModelPreloader').fadeOut();
+			}
+
 			if (data.error) {
 				Materialize.toast(data.msg, 4000);
 				return;
@@ -830,12 +855,16 @@ function validateBabyHeight(mode) {
 function addBabysNewHeight() {
 
 	let height = $('#todayValue').val().trim();
+	$('#heightModelPreloader').fadeIn();
 
 	$.post(`${BASE_URL}user/ProfileController/addBabyHeight`, {
 			height: height
 		},
 		function (data, status) {
 			console.log(data);
+
+			$('#heightModelPreloader').fadeOut();
+
 			if (data.error) {
 				Materialize.toast(data.msg, 4000);
 				return;
@@ -852,11 +881,15 @@ function updateBabysHeight() {
 
 	let height = $('#lastdayValue').val().trim();
 
+	$('#heightModelPreloader').fadeIn();
+
 	$.post(`${BASE_URL}user/ProfileController/updateBabyHeight`, {
 			height: height
 		},
 		function (data, status) {
 			console.log(data);
+			$('#heightModelPreloader').fadeOut();
+
 			if (data.error) {
 				Materialize.toast(data.msg, 4000);
 				return;
@@ -946,11 +979,15 @@ function addBabysNewWeight() {
 
 	let weight = $('#todayWeightValue').val().trim();
 
+	$('#weightModelPreloader').fadeIn();
+
 	$.post(`${BASE_URL}user/ProfileController/addBabyWeight`, {
 			weight: weight
 		},
 		function (data, status) {
 			console.log(data);
+			$('#weightModelPreloader').fadeOut();
+
 			if (data.error) {
 				Materialize.toast(data.msg, 4000);
 				return;
@@ -967,11 +1004,15 @@ function updateBabysWeight() {
 
 	let weight = $('#lastdayWeightValue').val().trim();
 
+	$('#weightModelPreloader').fadeIn();
+
 	$.post(`${BASE_URL}user/ProfileController/updateBabyWeight`, {
 			weight: weight
 		},
 		function (data, status) {
 			console.log(data);
+			$('#weightModelPreloader').fadeOut();
+
 			if (data.error) {
 				Materialize.toast(data.msg, 4000);
 				return;

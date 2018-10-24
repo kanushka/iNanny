@@ -36,11 +36,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<div class="card-panel grey lighten-5 z-depth-1">
 							<div class="row valign-wrapper">
 								<div class="col s2">
-									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+									<i id="alertIcon" class="small material-icons">photo_size_select_large</i>
 								</div>
-								<div class="col s10">
+								<div class="col s10 left-align">
 									<span class="black-text">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Click outside the green box and drag pointer to resize the safe zone
 									</span>
 								</div>
 							</div>
@@ -52,12 +52,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<div class="card-panel grey lighten-5 z-depth-1">
 							<div class="row valign-wrapper">
 								<div class="col s2">
-									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+									<i id="alertIcon" class="small material-icons">fullscreen</i>
 								</div>
-								<div class="col s10">
+								<div class="col s10 left-align">
 									<span class="black-text">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua..
+										Click inside the green box and drag pointer to move safe zone
 									</span>
 								</div>
 							</div>
@@ -69,12 +68,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<div class="card-panel grey lighten-5 z-depth-1">
 							<div class="row valign-wrapper">
 								<div class="col s2">
-									<img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+									<i id="alertIcon" class="small material-icons">fullscreen</i>
 								</div>
-								<div class="col s10">
+								<div class="col s10 left-align">
 									<span class="black-text">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua.
+										Click inside the green box and drag pointer to move safe zone
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- info card -->
+					<div class="col s12">
+						<div class="card-panel grey lighten-5 z-depth-1">
+							<div class="row valign-wrapper">
+								<div class="col s4">
+									<a id="resetBtn" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">games</i></a>
+								</div>
+								<div class="col s8 left-align">
+									<span class="black-text">
+										Reset safe zone to default positions
 									</span>
 								</div>
 							</div>

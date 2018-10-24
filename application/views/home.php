@@ -268,17 +268,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     #sidenav-overlay {
         z-index: 1 !important;
-    }
-
-    .model-prloader {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        background-color: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        display: none;
-    }
+    }    
 
 </style>
 

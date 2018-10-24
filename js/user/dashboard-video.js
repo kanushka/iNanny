@@ -84,8 +84,10 @@ var video = function (p) {
 		// framerate
 		// p.print(p.frameRate());
 
-		p.translate(p.width, 0); // move to far corner
-		p.scale(-1.0, 1.0); // flip x-axis backwards
+		// slip video
+		// p.translate(p.width, 0); // move to far corner
+		// p.scale(-1.0, 1.0); // flip x-axis backwards
+
 		// video data process
 		p.image(p.video, 0, 0, p.width, p.height);
 

@@ -114,7 +114,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<div class="container firstContent">
 
-		<div class="row">
+		<div class="row" style="margin-bottom: 10px;">
 
 			<div class="col s12 m8 hide-on-med-and-down">
 				<div class="z-depth-4 center-align" id='videoContainer'></div>
@@ -195,8 +195,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 						<div class="col s9 m10">
 							<span class="black-text">
-								Hint! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua.
+								Capturing the babies images which express the whole feeling of the moment. Document your babies journey quietly
+								and unobtrusively.
 							</span>
 						</div>
 					</div>
