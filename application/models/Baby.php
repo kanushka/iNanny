@@ -182,7 +182,7 @@ class Baby extends CI_Model
 
     public function getBabySleepingStatusByBabyId($babyId, $limit = 20)
     {
-        $this->db->select('*');
+        $this->db->select('status, added_at');
         $this->db->from('babys_activity_status');
         $this->db->where('baby_id', $babyId);
         $this->db->order_by('added_at', 'DESC');

@@ -83,7 +83,7 @@ class HomeController extends CI_Controller
 
         // send email
         $callbackUrl = $this->config->item('base_url') . 'user/' . $this->Crypt->urlEncode($relationId) . '/register';
-        $emailResponse = $this->__sendEmailByPhpMailer($firstName, $callbackUrl, $email);
+        $emailResponse = $this->__sendEmailByElastic($firstName, $callbackUrl, $email);
         if ($emailResponse['error']) {
             log_message('error', 'cannot send confirmation email -> ' . (isset($emailResponse['msg']) ? $emailResponse['msg'] : null));
             return $this->setResponse(true, "somthing went wrong. cannot send confirmation email to $email", ['email_staus' => (isset($emailResponse['msg']) ? $emailResponse['msg'] : null), 'callback' => $callbackUrl]);
@@ -154,6 +154,60 @@ class HomeController extends CI_Controller
             'error' => false,
         );
 
+        return $data;
+    }
+
+    private function __sendEmailByElastic($name, $url, $email)
+    {
+        $data = [
+            'name' => $name,
+            'url' => $url,
+            'email' => $email,
+        ];
+
+        $html = $this->load->view('email/registrationEmail', $data, true);
+        
+        try {
+            $url = 'https://api.elasticemail.com/v2/email/send';
+            $data = array(
+                'apikey' => $this->config->item('elastic_api_key'),
+                'from' => 'support@inanny.com',
+                'fromName' => 'iNanny Support',
+                'replyTo' => 'kanushkanet@gmail.com',
+                'msgTo' => $email,
+                'subject' => 'iNanny Registration',
+                'bodyHtml' => $html,
+            );
+
+            // use key 'http' even if you send the request to https://...
+            $options = array(
+                'http' => array(
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
+
+            $context  = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+            if ($result === false) {
+                $data = array(
+                    'error' => true,
+                    'results' => $result,
+                );
+            }
+
+            $data = array(
+                'error' => false,
+                'results' => $result,
+            );
+        } catch (Exception $ex) {
+            return [
+                'error' => true,
+                'msg' => 'Exception: ' . $ex->getMessage(),
+            ];
+        }
+       
         return $data;
     }
 

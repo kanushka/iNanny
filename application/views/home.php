@@ -484,6 +484,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	if (navigator.serviceWorker.controller) {
 		console.log('active service worker found, no need to register')
 	} else {
+
+		return; // for testing without service worker
+
 		//Register the ServiceWorker
 		navigator.serviceWorker.register('inanny-sw.js', {
 			scope: './'

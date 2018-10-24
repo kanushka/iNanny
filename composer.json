@@ -21,7 +21,8 @@
 		"mailgun/mailgun-php": "^2.5",
 		"php-http/guzzle6-adapter": "^1.1",
 		"twilio/sdk": "^5.17",
-		"phpmailer/phpmailer": "^6.0"
+		"phpmailer/phpmailer": "^6.0",
+		"elastic-email/web-api-client": "^1.0"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

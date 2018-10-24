@@ -37,10 +37,10 @@ $('#profileAddBtn').click(function () {
 });
 
 // handle form change event
-$("form :input").change(function() {
+$("form :input").change(function () {
 	$(this).closest('form').data('changed', true);
 	console.log($(this).closest('form'));
-  });
+});
 
 // new image button click in profile modal
 $('#newImageBtn').click(function () {
@@ -57,7 +57,7 @@ $('#saveBtn').click(function () {
 	if (OPENED_PROFILE_MODEL_TYPE == 'BABY') {
 		// baby data in the profile model
 		// save baby data
-		if (validateBabyModel()) {			
+		if (validateBabyModel()) {
 			saveBabyInfo();
 
 			// upload image
@@ -158,6 +158,9 @@ function getBabyInfo() {
 			}
 			setBabyTitle(data.baby);
 			BABY = data.baby;
+
+			// remove pre loader
+			$('#roundPreloader').fadeOut();
 		});
 }
 

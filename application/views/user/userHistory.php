@@ -81,10 +81,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </body>
 
 <script type="text/javascript">
-	$(document).ready(function () {
+	$(document).ready(function() {
 
 	});
-
 </script>
 
 

@@ -81,6 +81,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 	<?php $this->load->view('common/commonTopNav.php');?>
 
+	<!-- preloader -->
+	<?php $this->load->view('common/roundPreloader.php');?>
+
 	<div class="container firstContent">
 
 		<div class="fixed-action-btn">
