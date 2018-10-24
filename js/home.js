@@ -2,6 +2,8 @@ var BASE_URL = null;
 var VALID_EMAIL = false;
 var IS_ONGOING_REQUEST = false;
 
+var RETRY_REGISTER_ERROR = 0;
+
 //
 // events
 //
@@ -233,7 +235,6 @@ function registerUser() {
 	$.post(BASE_URL + "user/request",
 		data,
 		function (data, status) {
-			// console.log(data);
 			$('#registerModalPreloader').hide();
 			if (data.error) {
 				// something went wrong
@@ -253,5 +254,22 @@ function registerUser() {
 				Materialize.toast(`user successfully registered and confirmation email send to ${email}`, 4000);
 				$('#registerModal').modal('close');
 			}
-		});
+		}).fail(function () {
+		$('#registerModalPreloader').hide();
+
+		if (RETRY_REGISTER_ERROR < 2) {
+			var $toastContent = $('<span>Something went wrong</span>').add($('<button class="btn-flat toast-action" onclick="retryRegister()">TRY AGAIN</button>'));
+			Materialize.toast($toastContent, 10000);
+
+		} else {
+			Materialize.toast('Something wrong with iNanny. Please contact our assistant', 10000);
+			$('#registerModal').modal('close');
+		}
+	});
+}
+
+function retryRegister(toast) {
+	Materialize.Toast.removeAll();
+	registerUser();
+	RETRY_REGISTER_ERROR++;
 }

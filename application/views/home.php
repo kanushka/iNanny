@@ -376,7 +376,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<div id="registerModal" class="modal modal-fixed-footer">
 
-		<div id="" class="model-prloader">
+		<div id="registerModalPreloader" class="model-prloader">
 			<div class="preloader-wrapper active" style="vertical-align: middle; top: 45%;">
 				<div class="spinner-layer spinner-green-only">
 					<div class="circle-clipper left">
@@ -484,9 +484,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	if (navigator.serviceWorker.controller) {
 		console.log('active service worker found, no need to register')
 	} else {
-
-		return; // for testing without service worker
-
 		//Register the ServiceWorker
 		navigator.serviceWorker.register('inanny-sw.js', {
 			scope: './'

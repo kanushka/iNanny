@@ -148,8 +148,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<i id="faceIcon" class="small material-icons">sentiment_very_satisfied</i>
 								</div>
 								<div class="col s10 ">
-									<span id="faceMessage" class="">
-										Your baby in a HAPPY face
+									<span id="faceMessage">
+										baby is in neural mode. You can activate music using below player.
 									</span>
 								</div>
 							</div>

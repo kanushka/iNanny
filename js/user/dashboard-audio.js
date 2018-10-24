@@ -18,6 +18,7 @@ var audio = function (p) {
 		p.isCry.value(false);
 
 		p.print("sound model loaded");
+		p.showAlert('neutral');
 	};
 
 	p.draw = function () {
